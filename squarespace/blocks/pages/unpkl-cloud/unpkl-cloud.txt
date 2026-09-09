@@ -1,0 +1,129 @@
+UNpkl Cloud
+
+Manage your provisioned UNpkl gateways from the **Partner Portal** and mobile app—live traffic, maps, topology, security logs, and automation in one place.
+
+## Overview {#overview}
+
+UNpkl Cloud is the online control plane for gateways you have subscribed and provisioned (see **UNpkl SaaS**). Once a controller is linked to your account, it sends live network data to the nearest regional cloud endpoint. You sign in to the portal or app to see what is happening across your sites.
+
+The cloud keeps your account, devices, subscriptions, and audit history together. UNpkl **middleware** sits between the portal, mobile app, and cloud services—it handles sign-in, routes requests to the right regional endpoint, and powers features such as the cloud **AI assistant** using your organization context.
+
+At a glance, UNpkl Cloud helps you:
+
+- See which networks are online and whether anything needs attention
+- Watch live device activity, maps, topology, and connection trends
+- Review what was blocked and why (ads, trackers, malicious destinations, or your own rules)
+- Describe monitoring or automation jobs in plain language
+
+> [!tip|intro] Tip
+> Complete subscription enrollment and device provisioning before using the portal. Gateways must be linked to your account before live data appears here or in the mobile app.
+
+## Sign in to the Partner Portal {#sign-in}
+
+Open the UNpkl Partner Portal in a web browser and sign in with the same email you used for subscription enrollment.
+
+![UNpkl Partner Portal login with email, password, and social sign-in options](cloud-01-login.png)
+Sign in with email and password, or use Google, GitHub, or Microsoft if your organization allows it.
+
+Use **Account Sign up or Reset** if you need to create an account or recover access. **Clear Auth & Start Fresh** helps when a browser session is stuck during troubleshooting.
+
+## Home dashboard {#home-dashboard}
+
+After sign-in, the **Home** tab shows a summary of your organization—the **Network Operations Command Center**.
+
+![Partner Portal home dashboard with networks, jobs, metrics, and audit preview](cloud-01-logio.png){wide}
+The home dashboard highlights items that need attention and summarizes registered networks.
+
+**Need Attention** — alerts and jobs that may require a follow-up (for example pending approvals or failed tasks).
+
+**Networks** — how many gateways are registered and online, with a quick security status.
+
+**Jobs** — scheduled or custom monitoring and automation tasks running on your edges.
+
+**Metrics** — recorded measurements from those jobs (bandwidth, health checks, and similar).
+
+**Audit logs** — a preview of recent blocklist and policy events from your gateways; open the full audit view for details.
+
+Use the top navigation to move between **Home**, **Subscription**, **Live**, and **Jobs**.
+
+## Live monitoring {#live-monitoring}
+
+The **Live** tab combines four views on one screen so you can monitor activity without switching tools.
+
+![Live dashboard with device list, world map, topology graph, and connection chart](cloud-02-dashboard.png){wide}
+Live, Maps, Topology, and Connections update together from your provisioned gateways.
+
+**Live** — devices on your networks and their recent destinations (websites and DNS names). Toggle **DNS only** to hide plain IP addresses and focus on site names. This mirrors what you see in the mobile app’s **Live data** tab, aggregated for cloud fleets.
+
+**Maps** — where traffic is going geographically. Markers show countries and regions your devices contact; useful for multi-site or roaming deployments.
+
+**Topology** — how gateways, mesh agents, and clients connect back to the internet. Search by hostname, MAC, or IP to find a device quickly.
+
+**Connections** — a live chart of active connections per gateway (hostname), so you can spot spikes or drops over time.
+
+The mobile app offers the same live views when signed in with your cloud account. See **Live data** for app-specific tips.
+
+## Security and audit logs {#audit-logs}
+
+UNpkl Cloud applies layered protection on your gateways: known malicious addresses, category blocklists, and optional **custom rules** you upload for your organization. When traffic is stopped, an audit entry records what happened.
+
+Open **Live** → **Audit logs** to inspect events by device.
+
+![Audit log for a Roku TV showing blocked ad and tracker domains](cloud-04-block.png){wide}
+Each row shows when a device tried to reach a destination, what was blocked, and the matching rule.
+
+![Audit log for a laptop showing blocked tracking and ad domains](cloud-05-block.png){wide}
+The same view works for any client on your network—phones, TVs, laptops, and IoT devices.
+
+Columns mean:
+
+- **Time** — when the event occurred
+- **Source** — the device that made the request (internal IP)
+- **Target** — the site or service it tried to reach
+- **Action** — typically **block** when a rule matched
+- **Match / command** — why it matched (for example an exact DNS block)
+
+Custom allow lists can override system blocks when you need a trusted partner or internal service to stay reachable. Organization administrators manage those rules from the portal or API.
+
+## AI assistant {#ai-assistant}
+
+The **AI assistant** (bottom-right in the portal) helps you work in plain English instead of memorizing menus. It can use your subscription and device context when you ask about networks, jobs, maps, or security.
+
+![AI assistant panel for describing monitoring jobs and opening the job catalog](cloud=06-ai-assist.png)
+Describe what you want to monitor or automate, or browse ready-made templates in the job catalog.
+
+Examples of what you can ask:
+
+- Chart WAN bandwidth on a schedule
+- Summarize which devices generated the most blocks today
+- Open the job catalog for a pre-built monitoring template
+
+Press **Enter** to send a message; **Shift+Enter** adds a new line. Use **Attach** when you need to include a file with your request.
+
+Cloud Search in the mobile app follows a similar idea for fleet operators; local router Search is documented under **Search & command**.
+
+## How cloud and middleware fit together {#how-it-fits}
+
+You do not need to pick a regional server URL yourself. After provisioning, each gateway learns its assigned endpoint (for example a host like `ukeast-01.unpkl.io`) and streams data there automatically.
+
+- **Gateway** — enforces policy on your LAN and sends live metrics and audit events upstream
+- **Cloud** — stores accounts, devices, subscriptions, statistics, and audit history
+- **Middleware** — connects the portal and app to cloud services, including cloud AI chat
+- **Partner Portal** — web dashboard for fleet overview, live views, jobs, and audit logs
+- **Mobile app** — Live data, maps, topology, charts, and Search when signed in as a cloud user
+
+If live data is missing, confirm the gateway is online, provisioning completed, and your subscription is active. See **UNpkl SaaS** for enrollment and scanning steps, and **Troubleshooting** for connection help.
+
+@related unpkl-saas, live-data, search-and-command
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Source images (PNG compress to .jpg at build):
+  cloud-01-login.png
+  cloud-01-logio.png
+  cloud-02-dashboard.png
+  cloud-04-block.png
+  cloud-05-block.png
+  cloud=06-ai-assist.png

@@ -1,0 +1,102 @@
+UNpkl SaaS
+
+End-to-end deployment for the UNpkl Gateway system: hardware and mesh setup, enterprise subscription, cloud provisioning, and live monitoring from the UNpkl app.
+
+## Overview {#overview}
+
+This guide walks through the full enterprise workflow—from acquiring gateways and access points to enrolling a subscription, linking hardware to your account, and viewing live data in the dashboard.
+
+![UNpkl Wi-Fi 7 office deployment with gateways, mesh APs, and cloud connectivity](wifi7-office-deployment.png){wide}
+Typical office deployment: UNpkl gateways as controllers, mesh APs for coverage, and cloud-backed monitoring.
+
+The five steps below follow the order most customers use:
+
+1. **Hardware acquisition** — purchase and rack UNpkl gateways.
+2. **Mesh infrastructure** — install APs and secure mesh backhaul.
+3. **Subscription enrollment** — create an account and choose a plan.
+4. **Cloud provisioning** — scan each controller and link it to your subscription.
+5. **Live monitoring** — confirm the gateway is streaming metrics to the cloud.
+
+> [!tip|intro] Tip
+> Complete subscription enrollment (Step 3) before scanning devices (Step 4). The cloud assigns each gateway to your account and nearest regional endpoint only after both are in place.
+
+## Step 1: Hardware acquisition {#hardware-acquisition}
+
+Customers purchase UNpkl Gateways in bulk for high-capacity enterprise environments.
+
+**Hardware specs:**
+
+- **Chipset** — mt7988-based platforms built for throughput and policy enforcement at the edge.
+- **WAN connectivity** — fiber optic, Ethernet, and 5G options depending on site requirements.
+- **Controller role** — every gateway ships pre-configured during manufacturing to act as the central network controller for its site.
+
+Install controllers where they have reliable upstream WAN access and a clear path to mesh APs on your LAN or PoE plant.
+
+## Step 2: Mesh infrastructure and AP installation {#mesh-infrastructure}
+
+Expand coverage with **AP103** access points (or compatible UNpkl mesh agents) so Wi‑Fi reaches the full floor plan.
+
+**Connectivity** — connect APs to a smart PoE switch so power and data ride on the same cable run.
+
+**Mesh security** — each unit joins the deployment as a mesh agent. Every mesh link uses a unique **SAE secret** for the backhaul so neighbor networks cannot join your mesh accidentally.
+
+For placement, radio planning, and agent roles, see **UNpkl EasyMesh**.
+
+## Step 3: Enterprise subscription enrollment {#subscription-enrollment}
+
+Before provisioning hardware, activate a UNpkl service plan tied to your organization.
+
+1. **Choose a pricing plan** that matches your gateway count and support tier.
+2. **Sign up** using the UNpkl **iOS app**, **Android app**, or **web client**.
+3. **Verify your email** when prompted so account recovery and billing notices reach the right inbox.
+4. **Select and confirm your plan** — billing and subscription management stay in the same apps going forward.
+
+![Account creation, email verification, and plan selection in the UNpkl app](subscription.png){wide}
+Create your account, verify email, and pick the plan that fits your deployment.
+
+You can return to the app or web client later to update payment details or change plans.
+
+## Step 4: Cloud provisioning and QR scanning {#cloud-provisioning}
+
+Associate each controller with your account using Search in the UNpkl app.
+
+1. Open **Search** (from the Live Data header or your app’s search entry point).
+2. Enter the command **Scan device** (or tap the scan suggestion when shown).
+3. **Scan the QR code** included in each controller package when the camera opens.
+4. Wait for confirmation — the gateway links to your email and active subscription.
+
+![Scan device flow and QR provisioning in the UNpkl app](provision.png){wide}
+Use **Scan device** and the package QR code to register each controller.
+
+**Cloud endpoint** — after a successful scan, the cloud assigns the device to the nearest geographical data endpoint for your region (for example `https://ukeast-01.unpkl.io:44433`). The gateway uses that endpoint for ongoing sync; you do not need to pick the URL manually.
+
+Repeat the scan step for every controller in the deployment. Mesh agents discovered by an already-provisioned controller appear in topology without a separate QR scan.
+
+For remote fleet management after provisioning, see **UNpkl Cloud**.
+
+## Step 5: Live monitoring and data reporting {#live-monitoring}
+
+Once provisioning finishes, the Wi‑Fi controller enters its monitoring phase.
+
+**Automated sync** — the gateway periodically checks the cloud for its assigned endpoint and credentials.
+
+**Live stream** — when the endpoint is reachable, the controller sends live data, network metrics, and device health to your UNpkl dashboard.
+
+In the mobile app:
+
+- Open **Live Data** for per-device traffic and topology.
+- Open **Maps** for geolocated flows (cloud deployments show server-side geolocation).
+- Open **Charts** for trends over time.
+
+If the stream does not appear within a few minutes, confirm WAN connectivity on the gateway, that subscription status is active, and that provisioning completed for that unit. See **Live data** and **Troubleshooting** for more help.
+
+@related unpkl-cloud, unpkl-easymesh, live-data
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Source images (PNG compress to .jpg at build):
+  wifi7-office-deployment.png
+  subscription.png
+  provision.png

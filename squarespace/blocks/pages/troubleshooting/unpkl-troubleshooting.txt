@@ -1,0 +1,111 @@
+Troubleshooting
+
+Steps to diagnose connectivity, Wi‑Fi mesh, cloud sync, and advanced issues on UNpkl routers and access points.
+
+> [!tip|intro] Tip
+> Start with **Live data** in the UNpkl app for topology, signal strength (RSSI in **dBm**), and policy hits before changing hardware or running SSH commands.
+
+## No internet {#no-internet}
+
+1. Confirm the **WAN** cable is plugged into the UNpkl gateway and the **LAN** port on your ISP modem (or upstream switch).
+2. Check link lights on both the modem and UNpkl WAN port.
+3. Power-cycle the ISP modem, wait two minutes, then reboot the UNpkl device.
+4. Open **Live data** and look for blocked DNS, policy blocks, or unusual traffic that might explain a partial outage.
+5. If the router was recently reset, complete **Initial setup** again and register a new admin user.
+
+See **FAQ** if you cannot sign in to the app or need to recover an admin password.
+
+## App and login issues {#app-login}
+
+### Cannot connect to the router in the app
+
+Join a **UNpkl Wi‑Fi SSID** (or connect over Ethernet to the device LAN) before opening the app. Credentials are in the brochure shipped with the unit.
+
+### Certificate or login failures
+
+An **expired web certificate** is the most common cause of sudden app login failures.
+
+1. Open the router web UI in a browser and accept the self-signed certificate warning if prompted.
+2. In **Search**, run `upgrade` to install the latest build and renewed certificates.
+3. Sign in again from the iOS or Android app.
+
+## Wi‑Fi and EasyMesh {#wifi-mesh}
+
+Mesh extends coverage through a **controller** (main gateway) and **agent** nodes. When clients stick to the wrong node or speeds collapse on an agent, check signal strength first—not just “bars” on the phone.
+
+Open **Live data → Topology** in the UNpkl app. Each **agent** and **client (STA)** shows **RSSI in dBm** (a negative number, for example **-58 dBm**).
+
+> [!important] Signal strength quick reference (dBm)
+> **-30 to -50 dBm** — Excellent. Ideal for streaming, gaming, and agent backhaul.
+> **-60 to -65 dBm** — Good. Reliable for everyday use.
+> **-67 dBm** — Common roaming threshold; many phones start looking for a closer node around here.
+> **-75 to -85 dBm** — Weak. Expect packet loss, latency, and dropped calls.
+> **Below -80 dBm** — Poor. Reposition agents or move the client closer before tuning software settings.
+
+For mesh **setup** (backhaul SSID/PSK, `turn agent on`, placement), see **UNpkl EasyMesh**.
+
+### Devices won't roam (“sticky” clients)
+
+**Symptom:** You move near another node but the phone stays on a distant one with RSSI around **-80 dBm** or worse.
+
+1. Toggle Wi‑Fi off and on on the device to force a fresh scan.
+2. In **Topology**, confirm the closer agent shows **stronger dBm** (for example **-55 dBm** vs **-78 dBm** on the current link).
+3. Reposition agents: nodes that are **too close** can both read **-65 dBm** or better, so hysteresis keeps the phone on the old node—spread them further apart.
+
+### Slow speeds on an agent
+
+**Symptom:** Clients on the controller are fast; clients on an agent are slow despite “good” RSSI to the agent.
+
+1. In **Topology**, check **backhaul** RSSI between controller and agent—not just client-to-agent signal.
+2. If backhaul is **below -70 dBm** or flagged poor, move the agent closer to the controller or reduce obstacles (concrete, metal, microwave ovens).
+3. Prefer **Ethernet backhaul** to the agent when possible; it frees wireless bands for clients.
+
+### Drops and latency
+
+1. Avoid long **daisy chains** (Router → Agent 1 → Agent 2 → Agent 3) unless your layout requires it; prefer agents linking back toward the controller.
+2. Run **Optimize network** / channel scan in the app if available, or reduce interference from neighboring Wi‑Fi on the same channel.
+
+## Cloud offline {#cloud-offline}
+
+1. Confirm the gateway has working internet (WAN checks above).
+2. Verify DNS and NTP can reach the internet—cloud registration depends on both.
+3. Open **Settings → Cloud** and re-enter your organization code if registration expired or the device was replaced.
+4. Check **Live data** on the device locally; if local admin works but cloud does not, note the cloud status shown in **Settings** before contacting support.
+
+## Developers and SSH {#developers}
+
+For developers familiar with OpenWrt-style tooling, you can SSH to the router using credentials from the shipped brochure (hostname is often `doohickey.yhioe.lan` on the LAN).
+
+UNpkl’s main userspace process is **yhioe**—it handles most wireless, policy, and SAC behavior. Useful starting points:
+
+```shell{copy}
+ssh root@doohickey.yhioe.lan
+ps | grep yhioe
+```
+
+UNpkl uses **nftables** (not legacy iptables) for filtering. You should see nftables kernel modules only on this platform:
+
+```shell{copy}
+nft list table yhq
+nft list table ip6 yhq6
+```
+
+The `yhq` / `yhq6` tables are a good place to inspect IPv4/IPv6 policy state.
+
+> [!note] Custom development
+> If you are extending nftables policy or integrating with `yhioe`, send us a note—we are happy to assist with platform-specific details.
+
+## Get help {#get-help}
+
+Before opening a ticket:
+
+1. Note your firmware version from **Settings** or after running `upgrade` in **Search**.
+2. Export or screenshot **Live data → Topology** when the issue involves mesh or signal strength—include **dBm** values for affected clients and agents.
+3. Collect diagnostics from **Settings → Support** if your build exposes that option.
+4. For password recovery or SSH reset workflows, see **FAQ**.
+
+@related faq, initial-setup, unpkl-easymesh, live-data, search-and-command
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh

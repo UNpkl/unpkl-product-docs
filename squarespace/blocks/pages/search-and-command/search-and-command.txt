@@ -1,0 +1,239 @@
+Search & command
+
+Use **Search** in the UNpkl mobile app to control your local router with natural-language commands, ask questions about your network, and run in-app flows such as device provisioning. Commands are sent to the router as plain English phrases the firmware understands (SAC (search and command)).
+
+## Overview {#overview}
+
+![Search and Command](how-to-search-and-command.jpg){wide}
+
+Search combines three paths:
+
+1. **Direct commands** — phrases that match the router command vocabulary are sent to the router (`POST /c`) immediately (after confirmation when a reboot or brief Wi‑Fi interruption is expected).
+2. **AI assistant** — questions, follow-ups, and complex requests are handled by the local Search AI, which plans actions and runs them on **this router only** (not cloud fleet mode).
+3. **App flows** — scan, provision, return device, and subscription phrases open dedicated in-app wizards (middleware / QR), not raw router HTTP.
+
+You must be signed in to the **local embedded router** (connected to its Wi‑Fi or LAN). Cloud-only stats and multi-edge APIs are not available from local Search.
+
+## Open Search {#open-search}
+
+1. Open the UNpkl app while connected to your UNpkl router network.
+2. Tap **Search** in the navigation bar (or use the search entry point on your device).
+3. Type a command or question and submit.
+
+**Tips:**
+
+- Ask **how** questions in plain English (for example, `How do I forward a port?`) — these route to the AI assistant instead of being sent blindly to the router.
+- Short follow-ups (`yes`, `show passwords`, `the second network`) stay in the AI conversation thread.
+- If a phrase is not in the app's command list but may exist on newer firmware, the app can offer to send it **directly to the router** after you confirm.
+
+## How router commands work {#how-commands-work}
+
+Router control uses **natural-language queries** posted to `POST /c` as form field `query`. The SAC (search and command) engine on the device maps each phrase to an internal command hash (`YH_CMD_*` in firmware).
+
+**Wording matters** — use the same verbs and structure as the examples below. Hostnames (for example `Mac`) must match DHCP lease names on your router.
+
+**Allow vs unblock:** On port-access phrases, **allow** and **unblock** are synonyms. User intent to **deny**, **stop**, or block port access maps to `block access to port …`, not informal "stop" wording in the SAC command grammar.
+
+**Read-only HTTP** (no `/c` phrase): topology, live devices, history, policy tables, wireless config snapshot, cloud status, upgrade check — the AI uses dedicated GET routes when answering questions.
+
+## Block and unblock {#block-unblock}
+
+Block destinations (websites, domains, apps) or specific source → destination pairs. Timed blocks use explicit units: **minutes**, **hours**, or **days**.
+
+**Examples:**
+
+- `block somewebsite.com`
+- `block somewebsite.com for 2 hours`
+- `block source iPhone from destination social.example.com`
+- `block source from destination from time 9 pm to time 5 pm weekdays`
+- `block access to port 22`
+- `block access to port 443 from 192.168.1.10`
+- `unblock somewebsite.com`
+- `unblock source from destination`
+- `unblock access to port`
+- `unblock access to port only from 192.168.1.10`
+
+**Schedules** — combine source/destination with time windows and **weekdays**, **weekends**, or **everyday** (for example, `block source iPhone from destination social.example.com from time 9 pm to time 5 pm weekdays`).
+
+**Block everything:** `block all` / `unblock all`.
+
+## Tag, assign, and rename devices {#tag-assign}
+
+Organize clients and destinations with tags and groups, or rename a source for easier Search.
+
+**Examples:**
+
+- `tag destination news.example.com as News`
+- `tag source iPhone as Kids`
+- `untag destination news.example.com as News`
+- `untag source iPhone as Kids`
+- `assign source iPhone to Kids`
+- `unassign source iPhone`
+- `rename source iPhone as Johns-iPhone`
+
+## Port forwarding and firewall access {#port-forwarding}
+
+**Port forwarding (DNAT)** — expose a LAN service on a WAN port. Targets can be an IP, `host:port`, or a DHCP hostname.
+
+- `forward port 22 to 192.168.168.10:2622`
+- `forward port 44433 to Mac`
+- `forward port 80 to 192.168.168.1:2222`
+- `forward port to unblock traffic only from 192.168.1.5`
+- `unforward port 443`
+- `unforward port from 192.168.1.10`
+
+**Firewall / port access** — block or allow traffic to router services by port and optional source IP list.
+
+- `clear access to port 443`
+- `clear port 80`
+- `stop access to port 443`
+- `stop access to port from 10.0.0.5`
+
+Related phrases: `clear access to port …`, `clear port …`, `unblock access to port only from …`, `unforward port … from …`.
+
+## Wi‑Fi networks {#wifi}
+
+Manage SSIDs, passwords, VLAN IDs, and network count on 2.4 GHz, 5 GHz, or both bands.
+
+**Examples:**
+
+- `set 3 wifi networks on 5ghz band`
+- `set 2 wifi networks on 2ghz band`
+- `set 3 wifi networks on both bands`
+- `add wifi network GuestNet with password secret123 on 5ghz band`
+- `delete wifi network on the 5ghz band`
+- `delete wifi network on the 2ghz band`
+- `change wifi setting psk for UNpkl-5LG-AP-1 to newwifipassword`
+- `change wifi setting ssid for UNpkl-5LG-AP-1 to MyWifiSSID`
+- `change wifi setting vlan id for UNpkl-5LG-AP-1 to 100`
+
+**Add a network:** `add wifi network <ssid> with password <psk> on <band> band` — password must be **at least 8 characters**, **letters and digits only** (no spaces or symbols). Default band is **5 GHz** if omitted.
+
+**Changing an existing SSID** (`change wifi setting psk|ssid|hidden|vlan …`) applies without reboot but may briefly disconnect clients.
+
+**Adding networks, changing network count, or deleting SSIDs** requires a **router reboot** to take effect. The app prompts before rebooting.
+
+**Wi‑Fi join QR:** Ask the AI for a scannable QR (for example, `show qr code for wifi on 5ghz`). Passphrases are only included after you explicitly confirm.
+
+## Mesh and EasyMesh {#mesh}
+
+Control mesh controller and agent roles on supported hardware.
+
+**Examples:**
+
+- `turn mesh on`
+- `turn agent on`
+- `turn controller on`
+- `turn mesh controller on`
+
+## WAN, LAN, and device properties {#wan-lan}
+
+Configure static WAN addressing or LAN subnet.
+
+**Examples:**
+
+- `add static wan ip 10.0.0.2 gateway 10.0.0.1 dns 8.8.8.8`
+- `unset static wan`
+- `set lan to 10.0.0.1/24`
+- `set device property floor as 2`
+
+Other supported phrases include `refresh web certificate`, `set device property … as …`, and `clear all`.
+
+## Upgrade, reboot, and logging {#upgrade-reboot-logging}
+
+**Firmware:** `upgrade check`, `force upgrade`, `upgrade test`, `upgrade test check`.
+
+**Reboot:** Confirm before rebooting — you will be logged out. Required after some Wi‑Fi/WAN changes.
+
+**Logging:**
+
+- `start logging`
+- `stop logging`
+- `start logging to file`
+
+Ask the AI **is cloud connected?** or **cloud status** to read cloud registration without a `/c` command.
+
+## Device scan, provisioning, and subscriptions {#device-lifecycle}
+
+These phrases open **in-app flows** (QR scanner, confirmations, middleware) — they are **not** sent as `POST /c` router commands.
+
+**Scan / add / provision:** `scan`, `scan device`, `scan new device`, `scan multiple devices`, `provision`, `add device`
+
+**Return / remove:** `unprovision`, `unprovision device`, `return device`, `remove device`
+
+**Subscription billing:** `pause subscription`, `cancel subscription`, `sync subscription`, `resume subscription`
+
+Use Search with one of the phrases above; follow on-screen steps.
+
+## AI assistant capabilities {#ai-assistant}
+
+When your input is a question or needs multiple steps, local Search AI:
+
+1. Plans using router context (topology, live devices, network stats).
+2. Runs allowed **router actions** on this device only.
+3. Summarizes results in plain language (without exposing internal action names).
+
+**Supported router actions** (30): `execute_command`, `get_topology`, `get_platform_id`, `get_sysinfo`, `get_history`, `get_live`, `check_upgrade`, `force_upgrade`, `reboot`, `exec`, … and `execute_command` for any other SAC command phrase.
+
+Destructive shell commands via `exec` are blocked unless explicitly allowed. Wi‑Fi passwords require your confirmation before the AI displays them.
+
+## SAC phrase templates {#sac-phrase-templates}
+
+The firmware matcher accepts 194 SAC phrase templates (source file `unsac_commands.txt` in firmware). Samples by leading verb:
+
+**unblock** — `unblock`, `unblock source`, `unblock source from destination`, `unblock source from destination from time pm to time pm`, `unblock source from destination from time pm to time am`, `unblock source from destination from time am to time pm`, `unblock source from destination from time am to time am`, `unblock source from destination from time am to time`
+- _34 additional `unblock` templates in firmware_
+**block** — `block`, `block source`, `block source from destination`, `block source from destination from time pm to time pm`, `block source from destination from time pm to time am`, `block source from destination from time am to time pm`, `block source from destination from time am to time am`, `block source from destination from time am to time`
+- _33 additional `block` templates in firmware_
+**add** — `add wifi network`, `add wifi network with password`, `add wifi network with password ssid`, `add wifi network with ssid`, `add wifi network with ssid password`, `add wifi network with ssid password on`, `add wifi network with ssid password on band`, `add wifi ssid`
+- _7 additional `add` templates in firmware_
+**set** — `set lan to`, `set`, `set n wifi networks on`, `set n wifi networks`, `set device property as`, `set device property`, `set n wifi`, `set n wifi networks on the`
+- _3 additional `set` templates in firmware_
+**change** — `change wifi setting password for`, `change wifi setting password for to`, `change wifi setting psk for`, `change wifi setting psk for to`, `change wifi setting ssid for`, `change wifi setting vlan for`, `change wifi setting vlan for to`, `change wifi setting vlan id for`
+- _2 additional `change` templates in firmware_
+**turn** — `turn mesh controller on`, `turn controller mesh on`, `turn controller on`, `turn agent mesh on`, `turn mesh agent on`, `turn agent on`, `turn mesh on`, `turn`
+**tag** — `tag source as srcgroup`, `tag destination as dsttag`, `tag source as`, `tag destination as`, `tag`, `tag source`, `tag destination`
+**untag** — `untag source as srcgroup`, `untag destination as dsttag`, `untag source as`, `untag destination as`, `untag`, `untag source`, `untag destination`
+**forward** — `forward port to port`, `forward port to`, `forward port`, `forward port to port unblock traffic only from`, `forward port to unblock access only from`, `forward port to unblock traffic only from`
+**upgrade** — `upgrade`, `upgrade test`, `upgrade test check`, `upgrade check`, `upgrade force`
+**assign** — `assign source to srcgroup`, `assign source`, `assign source to`, `assign`
+**clear** — `clear all`, `clear`, `clear access to port`, `clear port`
+
+Placeholders such as `source`, `destination`, `time`, `n`, and `port` stand in for your values. See **Block and unblock** and **Wi‑Fi networks** for filled-in examples.
+
+## Firmware command hashes {#firmware-commands}
+
+Each accepted phrase resolves to a `YH_CMD_*` hash in `yh_unsac_hashes.h` (194 definitions). Examples:
+
+- `block source from destination`
+- `unblock source from destination`
+- `block source from destination from time pm to time pm`
+- `unblock source from destination from time pm to time pm`
+- `block source from destination from time pm to time am`
+- `unblock source from destination from time pm to time am`
+
+The app and docs stay aligned with firmware sources (`yh_unsac_hashes.h`, `unsac_commands.txt`) when commands are added or renamed. Those filenames use the internal UNSAC name; documentation refers to the feature as SAC (search and command).
+
+## Confirmations and errors {#confirmations}
+
+**Reboot prompt** — After `add wifi network`, `set N wifi networks`, `delete wifi network`, or static WAN changes, reply **yes** / **now** to reboot immediately, **later** / **no** to apply without rebooting now, or **cancel** to abort.
+
+**Wi‑Fi setting changes** — `change wifi setting …` may interrupt connections briefly; no reboot required.
+
+**Invalid command** — Router may return `invalid command` or `uh oh` in the response message even with HTTP 200.
+
+**Direct send** — Unknown phrases can still be tried on the router if you confirm when prompted.
+
+@related settings-and-charts, live-data, faq
+
+---
+Auto-generated sections: scripts/generate_search_and_command_txt.py (--generate-search)
+Manual sections: ## Title {#manual-your-id} — see squarespace/TEXT-FORMAT.md
+Build HTML: ./build-pages.sh
+Sources (app/firmware paths in script header):
+  searchCommands.ts ← constants/searchCommands.ts
+  localAiSystemPrompt.txt ← constants/localAiSystemPrompt.txt
+  localAiTools.ts ← services/localAiTools.ts
+  localAiChat.ts ← services/localAiChat.ts
+  yh_unsac_hashes.h ← include/yh_unsac_hashes.h
+  unsac_commands.txt ← src/yh_ossl_lib/unsac_commands.txt

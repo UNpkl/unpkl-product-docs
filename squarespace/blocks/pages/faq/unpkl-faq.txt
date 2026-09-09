@@ -1,0 +1,70 @@
+FAQ
+
+Quick answers to common UNpkl router, app, and Search questions.
+
+## Router and connectivity {#connectivity}
+
+## Cannot login into the app
+
+Make sure you are connected to an SSID (Wi-Fi network) on the UNpkl router
+
+![Check Wi-Fi SSID/Network](how-to-initial-setup-wifi-ssid.jpg){wide}
+
+### Lost password and cannot remember security questions?
+
+> [!important] Warning
+> Do not attempt to do a physical reset by pressing the physical reset button here! Follow instructions below.
+
+Locate the admin password in the packaged brochure
+
+![Locate the credentials from the packaged brochure shipped with the device](brochure-ssh.jpg){wide}
+
+If you forget the admin password and the answers to your security questions, you can reset local admin data from the LAN using SSH:
+
+```shell{copy}
+ssh root@doohickey.yhioe.lan
+rm /mnt/data/yhioe/yh_nf*
+reboot
+```
+
+> [!important] Important
+> The commands above remove local admin data on the router. Use only when you control the device on your LAN and understand that existing admin accounts will be cleared.
+
+If you need assistance with the above we are happy to assist - please send us a note.
+
+### Cannot access the internet?
+
+Please make sure the router **WAN** cable is connected to the **LAN** port on your Internet Service Provider (ISP) modem (or upstream switch).
+
+Reboot the router and try again. If the problem continues, see **Troubleshooting** and confirm the WAN link lights on both devices.
+
+After reboot, register a new admin user through **Initial setup**. Contact UNpkl support if you need step-by-step help.
+
+## Search and blocking {#blocking}
+
+### Block or unblock commands seem ineffective
+
+When you enter a command like `block facebook`, the Wi‑Fi network learns IP addresses as DNS resolves each site and blocks them. Results can take a moment to appear in **Live data**.
+
+If blocking still looks wrong, note the exact command you used and contact support.
+
+## Mobile app {#mobile-app}
+
+### App stopped working — cannot log in
+
+The most likely cause is an **expired web certificate** on the router.
+
+We try to renew certificates automatically. To restore app access quickly:
+
+1. Open the router **web interface** in a browser and accept the self-signed certificate warning so you can sign in.
+2. In **Search**, run `upgrade` to install the latest build and certificates.
+
+When the upgrade finishes, sign in again from the iOS or Android app.
+
+@related troubleshooting, initial-setup, search-and-command
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Code blocks: use ``` fences (see TEXT-FORMAT.md). Legacy `<code markup>` … `</code markup>` also works.

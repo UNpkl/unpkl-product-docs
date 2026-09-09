@@ -1,0 +1,89 @@
+{
+  "productName": "UNpkl",
+  "hubTitle": "How to UN-pickle",
+  "hubUrl": "/how-to",
+  "iconUrl": "",
+  "pageUrlPrefix": "/how-to-",
+  "sections": [
+    {
+      "id": "get-started",
+      "title": "Get started",
+      "items": [
+        {
+          "slug": "initial-setup",
+          "title": "Initial setup",
+          "description": "Initial setup steps for your UNpkl device."
+        }
+      ]
+    },
+    {
+      "id": "manage",
+      "title": "Manage your network",
+      "items": [
+        {
+          "slug": "search-and-command",
+          "title": "Search & command",
+          "description": "Search and easy policy management."
+        },
+        {
+          "slug": "settings-and-charts",
+          "title": "Settings & charts",
+          "description": "Working with settings and charts."
+        },
+        {
+          "slug": "live-data",
+          "title": "Live data",
+          "description": "View live network traffic."
+        },
+        {
+          "slug": "zero-trust",
+          "title": "Zero Trust",
+          "description": "Deny-all by default, then allow what you choose."
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform & cloud",
+      "items": [
+        {
+          "slug": "unpkl-saas",
+          "title": "UNpkl SaaS",
+          "description": "Easy-to-use DNS firewall."
+        },
+        {
+          "slug": "unpkl-cloud",
+          "title": "UNpkl Cloud",
+          "description": "Cloud access and scalable remote management."
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "title": "Hardware & Wi-Fi",
+      "items": [
+        {
+          "slug": "unpkl-easymesh",
+          "title": "UNpkl EasyMesh",
+          "description": "Expand your Wi-Fi coverage."
+        }
+      ]
+    },
+    {
+      "id": "help",
+      "title": "Help",
+      "items": [
+        {
+          "slug": "faq",
+          "title": "FAQ",
+          "description": "Frequently asked questions."
+        },
+        {
+          "slug": "troubleshooting",
+          "title": "Troubleshooting",
+          "description": "Basic troubleshooting steps."
+        }
+      ]
+    }
+  ]
+}

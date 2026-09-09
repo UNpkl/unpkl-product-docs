@@ -1,0 +1,137 @@
+Zero Trust on UNpkl
+
+Deny all until you allow—on your UNpkl router, with plain-language Search commands.
+
+## What Zero Trust means here {#what-it-is}
+
+By default, Zero Trust needs **no subscription**. Deny-all, allow lists, user groups, and intranet rules all run on the router itself.
+
+If you subscribe, **UNpkl Cloud** allows destinations only when they are not blacklisted by TALOS and other threat-intelligence feeds, and you can add a custom CSV via AI to harden the network further.
+
+On most home routers, the default is **allow all**: every device can reach the internet until you block something.
+
+**Zero Trust** flips that: **deny all** until a destination (or device → destination) is **explicitly allowed**. Traffic that is not on your allow list is blocked at the edge—whether that edge faces the **internet** or your **intranet** (LAN, SD‑WAN, or other private prefixes).
+
+UNpkl makes that switch practical. You do not need enterprise policy UIs—you change the default in **Search**, then unblock what your household or office needs. The same grouping model also supports **zone-style / VRF-like** policy: put sources into users or tags, then allow only specific destination networks.
+
+> [!tip|intro] Tip
+> Run Zero Trust commands while signed in to the **local router** (connected to its Wi‑Fi or LAN). See **Search & command** for how phrases are sent to the device.
+
+## Turn on deny-all {#deny-all}
+
+Change the default policy from allow-all to deny-all with one command:
+
+- `block all`
+
+On the **latest builds**, you can also use:
+
+- `deny all`
+
+Both set the network default so new destinations are blocked until you allow them.
+
+> [!important] Important
+> After `block all` / `deny all`, apps and websites stop working until you **unblock** what you need. Start with a short allow list (for example DNS-friendly sites you use every day), then expand as you watch **Live data**.
+
+To return to a normal allow-all default:
+
+- `unblock all`
+
+## Allow what you need {#allow-list}
+
+Once deny-all is on, unblock destinations by name:
+
+- `unblock google`
+- `unblock github`
+
+You can combine steps in one Search submission:
+
+- `block all. unblock google and github`
+
+That turns on Zero Trust and immediately allows Google and GitHub in a single phrase.
+
+Unblock more sites the same way as you discover what is missing (mail, school portals, streaming, and so on). Check **Live data** to see which destinations devices are trying to reach.
+
+## Per-device exceptions {#per-device}
+
+Zero Trust is not only “whole network allow lists.” You can selectively allow **one device** to reach certain destinations—or categories—without opening them for everyone.
+
+Examples:
+
+- `unblock tims-iPhone from math websites`
+- `unblock tims-iPhone from math websites for 2 hours`
+
+Use the hostname the router shows in **Live data** (or a name you set in Search). Timed unblocks expire automatically when the duration ends.
+
+This is useful for homework windows, guest devices, or giving one phone access while the rest of the network stays on deny-all.
+
+## Assign devices to a user {#assign-user}
+
+Group several devices under one **user** (or household member name), then apply policy to that person in one command.
+
+First assign devices:
+
+- `assign iPhone, Mac and RokuTV to John`
+
+Hostnames should match what **Live data** shows (or names you have already set). After that, John’s phones, computer, and TV share the same policy target.
+
+Then allow temporary access for that user—for example a short window while deny-all stays on for everyone else:
+
+- `unblock John for 10 minutes`
+
+When the timer ends, John’s devices return to the network default (deny-all if you have Zero Trust enabled).
+
+You can still combine user and destination rules when needed (for example unblocking a person from a category of sites). Assign once; reuse the user name in later Search phrases.
+
+## Intranet zones and power policy {#intranet-zones}
+
+Zero Trust is not only about the public internet. You can build **intranet policy**—similar in spirit to **zone-based routing** or **VRF**—by grouping sources and destinations, then allowing only the paths you choose.
+
+Typical pattern:
+
+1. Assign devices to a person.
+2. Tag that person (or group) with a zone or corporate label.
+3. Unblock that group from an internal or SD‑WAN prefix.
+
+Example:
+
+- `assign tims-iPhone and tims-MacbookPro to Tim`
+- `tag Tim as FT Corporate`
+- `unblock FT Corporate from 10.10.0.0/16`
+
+That places Tim in the **FT Corporate** group and allows those devices to reach the internal (or SD‑WAN) **10.10.0.0/16** network. Other devices stay on the default deny-all (or your other rules) and do not get that internal route access unless you allow them the same way.
+
+Use this for home-office split networks, guest isolation, or giving a work profile access to a private CIDR without opening it to every client on the LAN.
+
+## Suggested workflow {#workflow}
+
+1. Open **Search** on the UNpkl app while connected to the router.
+2. Run `block all` (or `deny all` on the latest build).
+3. Unblock essentials: for example `unblock google and github` (or combine with step 2 as `block all. unblock google and github`).
+4. Optionally assign household devices to users (for example `assign iPhone, Mac and RokuTV to John`).
+5. For intranet / SD‑WAN access, tag users into zones and unblock those groups from private prefixes (for example `tag Tim as FT Corporate` then `unblock FT Corporate from 10.10.0.0/16`).
+6. Watch **Live data** for blocked attempts; unblock sites, devices, users, or zones as needed.
+7. Use timed access such as `unblock John for 10 minutes` when only a short window is required.
+
+When you no longer want deny-all as the default, run `unblock all` and refine with normal `block` / `unblock` rules instead.
+
+## Related commands {#related-commands}
+
+- **Deny all by default** — `block all` or `deny all`
+- **Restore allow-all default** — `unblock all`
+- **Allow a site** — `unblock google`
+- **Deny-all + allow list in one go** — `block all. unblock google and github`
+- **Device → destination** — `unblock tims-iPhone from math websites`
+- **Timed device access** — `unblock tims-iPhone from math websites for 2 hours`
+- **Assign devices to a user** — `assign iPhone, Mac and RokuTV to John`
+- **Timed user access** — `unblock John for 10 minutes`
+- **Tag a user as a zone / group** — `tag Tim as FT Corporate`
+- **Allow a group to an internal prefix** — `unblock FT Corporate from 10.10.0.0/16`
+
+Full block/unblock grammar, schedules, and port rules are in **Search & command**.
+
+@related search-and-command, live-data, faq, troubleshooting
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+Create Squarespace page slug: how-to-zero-trust (see blocks/pages/manifest.txt after build).

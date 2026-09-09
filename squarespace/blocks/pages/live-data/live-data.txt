@@ -1,0 +1,113 @@
+Live data
+
+Use the **Live Data**, **Topology**, and **Maps** views in the UNpkl mobile app to watch network activity as it happens, see how devices connect, and explore where traffic goes.
+
+## Overview {#overview}
+
+![UNpkl Live Data list, Topology diagram, and Maps view on three phones](live-data.jpg){wide}
+Live Data, Topology, and Maps work together to show who is on your network, how they connect, and where traffic goes.
+
+The **Live Data** tab in the bottom navigation is your real-time monitoring home. It has two sub-tabs:
+
+- **Live Data** — a scrolling list of devices and their recent destinations (websites, DNS names, and connections).
+- **Topology** — a diagram of your network: internet gateway, UNpkl router(s), mesh agents, and connected clients.
+
+The separate **Maps** tab plots live traffic on a world map when location data is available.
+
+> [!tip|intro] Tip
+> Tap the **pause** icon in the header to freeze updates while you read a row or explore the topology. Tap **play** to resume the live stream.
+
+## Open Live Data {#open-live-data}
+
+1. Open the UNpkl app while signed in to your UNpkl router (or cloud account).
+2. Tap **Live Data** in the bottom navigation.
+3. Use the **Live Data** or **Topology** sub-tab at the top of the screen.
+
+The header also includes:
+
+- **Search** (magnifying glass) — open Search to run commands or ask questions about your network.
+- **Play / Pause** — start or stop live updates for both the device list and topology.
+
+If data is still loading, wait a few seconds. The app retries automatically when the connection returns.
+
+## Live Data list {#live-data-list}
+
+The **Live Data** sub-tab groups activity by device on your network.
+
+Each device card shows:
+
+- **Hostname** — the name your router knows for the client (from DHCP or your own rename in Search).
+- **IP address** and **MAC address**
+- **Recent destinations** — up to five of the latest sites or services that device contacted, with timestamps and repeat counts when the same name appears often.
+
+Devices with recent activity are highlighted with a green edge. Devices with no recent traffic appear dimmer.
+
+Tap the arrow on a device card to open the full destination list for that client.
+
+A summary bar above the list shows how many devices are visible and how many live updates have been received.
+
+## DNS only {#dns-only}
+
+Turn **DNS only** on to hide destination rows that are plain IP addresses and show DNS hostnames instead. This makes the list easier to read when you care about site names rather than raw IPs.
+
+Turn **DNS only** off to see every destination name, including IP literals.
+
+## Topology {#topology}
+
+Switch to the **Topology** sub-tab to see a map of how your network is wired together.
+
+Typical nodes include:
+
+- **Internet** — your upstream connection
+- **Controller** — the main UNpkl router
+- **Agent** — mesh Wi‑Fi access points (EasyMesh setups)
+- **Device** — phones, laptops, and other clients
+
+**Explore the diagram:**
+
+- Pinch or use zoom controls to magnify dense areas.
+- Drag the canvas to pan around.
+- Drag individual nodes to rearrange them; positions are remembered on your phone.
+
+**Tap a node** to open details. For client devices you can:
+
+- **Show Policy** — view tags, blocks, and policy matches applied to that device.
+- **Block Device** / **Unblock Device** — quickly stop or restore network access for that client.
+
+If topology refresh is temporarily unavailable, the app may show the last successful snapshot with a time hint until new data arrives.
+
+From **Search**, when the assistant finds a device you can tap **Open in Topology** to jump here and highlight that client (nothing opens automatically—you choose when to navigate).
+
+For mesh layout and hardware placement, see **UNpkl EasyMesh**.
+
+## Maps {#maps}
+
+Tap **Maps** in the bottom navigation to see live traffic on a world map.
+
+**First-time setup:** the map uses an on-device IP location database. Download it once from **Settings** → **Download IP Maps Data** (see **Settings & charts**). When the database is installed, return to **Maps** to see pins.
+
+While the Maps tab is open, live records from your router feed the map. A banner shows how many live records and map pins are active.
+
+- **Local router** — pins are placed by country (or region) from the GeoIP database. Private LAN addresses appear under **Local or unknown IP**.
+- **Cloud** — pins reflect geolocated flows from your cloud-connected edges.
+
+Tap a pin or country cluster to zoom in and, when available, see which devices and destinations contributed to that region.
+
+The number of map pins can be lower than the live record count when many flows share the same location or IP.
+
+## Troubleshooting tips {#troubleshooting-tips}
+
+- **No devices yet** — confirm you are on the UNpkl Wi‑Fi or LAN and signed in. Tap **play** if the stream was paused.
+- **Empty map** — download **IP Maps Data** in Settings, then reopen Maps.
+- **Topology empty** — wait for the first refresh, or check that the router is online. Pause and play once to retry.
+
+For broader connection issues, see **Troubleshooting**.
+
+@related search-and-command, settings-and-charts, troubleshooting
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Source images (compressed .jpg at build):
+  live-data.jpg

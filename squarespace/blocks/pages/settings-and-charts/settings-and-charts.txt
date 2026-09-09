@@ -1,0 +1,88 @@
+Settings & charts
+
+Use the **Settings** and **Charts** tabs in the UNpkl mobile app to configure your router, manage AI for Search, and review network activity over time.
+
+## Overview {#overview}
+
+The bottom navigation includes **Settings** (device configuration, AI, and network actions) and **Charts** (historical traffic and DNS summaries). Both tabs work when you are signed in to your local UNpkl router.
+
+> [!tip|intro] Tip
+> Apply firmware upgrades and reboots during a maintenance window. Wireless and SSH changes can briefly interrupt connections.
+
+## Open Settings and Charts {#open-settings}
+
+1. Open the UNpkl app while connected to your UNpkl router network.
+2. Tap **Settings** in the bottom bar for configuration panels.
+3. Tap **Charts** for network activity and DNS visualizations.
+
+![UNpkl Settings screen with Device Settings, Network Management, and SSH modal](settings.jpg){wide}
+Settings lists device options and network actions; tap **SSH** to open SSH key and password settings.
+
+## Device settings {#device-settings}
+
+Under **Device Settings** on the Settings tab:
+
+- **Enable Biometrics** — turn on Face ID, Touch ID, or your device’s biometric unlock for faster sign-in to the admin app.
+- **AI settings** — expand to configure Search AI (see the next section). Shown for local (non-cloud) router sessions.
+- **Download IP Maps Data** / **Delete IP Maps Data** — download or remove the on-device IP geolocation database used for map and location features. Tap again to toggle between download and delete when data is present.
+
+Cloud users also see a profile header and **Cloud Management** options (for example **Approve Requests**) above these sections.
+
+## AI settings {#ai-settings}
+
+Expand **AI settings** under Device Settings to control how Search uses external AI on your local router.
+
+![AI settings panel with toggles and OpenAI-compatible API fields](ai-settings.jpg)
+Configure Search AI middleware, redaction, and optional custom chat endpoints.
+
+**Disable external AI (Search)** — when on, natural-language Search will not call external AI. Router SAC commands still work.
+
+**Redact sensitive data for AI** — when on (recommended), Wi‑Fi passwords and similar secrets are removed from data sent to external AI. Turn off only for trusted local models on your LAN.
+
+### Assistant (Search)
+
+By default, Search AI uses UNpkl middleware (the OpenRouter key stays on the server). Optionally set a custom OpenAI-compatible chat URL; Bearer keys are stored in the device keychain.
+
+- **Chat completions URL** — leave blank for the middleware proxy default, or enter your provider’s chat completions endpoint.
+- **Model id (optional)** — override the default model (placeholder shows the default OpenRouter model name).
+- **API key (Bearer)** — enter a Bearer token if your provider requires one, then tap **Save API key**. Use **Clear saved key** when a key is already stored and the field is empty.
+- **Restore middleware defaults** — reset the endpoint, model, and saved key to UNpkl middleware defaults.
+
+For command examples and Search behavior, see **Search & command**.
+
+## Network management {#network-management}
+
+The **Network Management** section on Settings includes:
+
+- **Wireless** — open Wi‑Fi SSID, password, and radio settings for your UNpkl network.
+- **SSH** — view or paste an SSH public key, enable password authentication, and set an SSH password. Tap **Save Settings** to apply.
+- **Upgrade Firmware** — check for and install firmware updates from UNpkl. Confirm when prompted; the device may reboot.
+- **Reboot Device** — restart the router. Active connections will drop briefly.
+
+**Account Actions** at the bottom of Settings includes **Log Out**.
+
+## Charts {#charts}
+
+Open the **Charts** tab to review historical data from your router.
+
+![UNpkl Charts tab showing connection activity and DNS query distribution](charts.jpg)
+The Charts tab summarizes connection trends and top DNS lookups for the selected time window.
+
+At the top, use the **device filter** to view all devices or focus on one client.
+
+**Network Activity** — line chart of active connections over time, with **Current Window** and **Connections/sec** summary cards below the graph.
+
+**DNS Query Distribution** — donut chart of DNS lookups by domain, with a legend showing each hostname, its share of queries, and the query count.
+
+Charts complement **Live data** (real-time flows) and Search queries about traffic history. Use Charts for trends; use Live data to inspect individual connections as they happen.
+
+@related live-data, search-and-command, unpkl-easymesh
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Source images (compressed .jpg at build):
+  settings.jpg
+  ai-settings.jpg
+  charts.jpg

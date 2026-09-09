@@ -1,0 +1,81 @@
+How to Get Started with your UNpkl router
+
+Models may differ individually, however this set of instructions is common to all models unless expressly indicated.
+
+## Setting up your UNpkl Router {#unpkl-router-setup}
+
+1. Unbox all contents of the package. Verify it includes your UNpkl device, a power adapter, and a network cable.
+2. Install the UNpkl app from the App Store or Play Store on your smartphone.
+3. Connect the supplied network cable to the WAN port on the router and the other end to your ISP modem LAN port or network switch.
+4. Connect the power cord to power up your UNpkl router. Wait 2–3 minutes.
+
+## Connecting for the first time using the app {#first-time-app-setup}
+
+> [!important|intro] Important
+> Connect to a UNpkl SSID before performing app setup or admin registration steps.
+
+Locate the brochure that shipped with the package.
+
+Connect to a UNpkl SSID before performing any of the following steps. The SSID and password are included in the brochure. You may scan the QR code to join the UNpkl Wi-Fi network using a smartphone.
+
+![iPhone Settings screen showing a UNpkl Wi-Fi network with UNpkl- SSID prefix](how-to-initial-setup-wifi-ssid.png)
+Connect to your UNpkl Wi-Fi network before continuing setup.
+
+## Download the UNpkl app
+
+Once you join a UNpkl Wi-Fi network, download the UNpkl app and follow the in-app instructions to set up the router.
+
+![UNpkl mobile app setup screens on a smartphone](how-to-initial-setup-mobile.png)
+Follow the UNpkl app prompts to complete first-time setup.
+
+It is preferable to use the app to set up the login and password (see Notes below). If you wish to use a web browser instead, continue with the next section.
+
+> [!tip|after:first-time-app-setup] Tip
+> Use the UNpkl mobile app for first-time setup when possible. It is the easiest way to create your admin login and password.
+
+## Admin registration and sign-in {#admin-registration}
+
+Connect your smart devices to the UNpkl network. When the router powers up, you can join using the SSID and password supplied in the brochure. You can change the SSID and password via the app or web browser at https://doohickey.yhioe.lan:4433 or https://192.168.168.1:4433.
+
+1. Once connected to the UNpkl SSID, launch the UNpkl app or web browser and complete the admin user registration process to sign in to the UNpkl admin UI.
+2. After admin user registration is complete, we recommend enabling biometric authentication so you can easily access the UNpkl Admin app. This step is optional but recommended.
+
+## Notes {#setup-notes}
+
+Use alphanumeric characters without spaces for usernames and passwords. Example:
+
+- **Username:** SpongeBobSpatula
+- **Password:** KwNs2GLFIOo3nQG6YZ15Xk
+
+The above is an example only. Set up using your own username and password.
+
+Use alphanumeric characters, optionally with dashes (`-`) and dots (`.`), for SSIDs. Example:
+
+- **SSID:** My-Own-Personal-Space
+
+To reset your password, go to the reset link in the app or web interface, enter the new password, and answer the security questions you chose during setup. If your answers are correct, the password you entered becomes the new admin password.
+
+If you forget your password and security questions, a hard reset with the reset button will not help, since it is assumed at that point that the appliance is compromised.
+
+We are happy to help you reset the password if you email us. We will walk you through step-by-step instructions over the phone. If things get messy, we are happy to provide a replacement.
+
+> [!important|after:setup-notes] Important
+> If you forget both your admin password and security question answers, a physical reset will not restore access. Contact UNpkl support for help.
+
+## Browser security warning {#browser-security-warning}
+
+If you see a browser warning (Chrome shown below) when accessing the UNpkl web service, click **Advanced** and then **Proceed to doohickey.yhioe.lan (unsafe)**.
+
+![Chrome browser security warning page with Advanced and Proceed options](chrome-browser-warning.png)
+Chrome "Your connection is not private" warning when opening the local UNpkl admin URL.
+
+@related unpkl-easymesh, troubleshooting, faq
+
+---
+Markup reference: squarespace/TEXT-FORMAT.md
+Build: ./build-pages.sh
+
+Source images (PNG compress to .jpg at build):
+  how-to-initial-setup-wifi-ssid.png
+  how-to-initial-setup-mobile.png
+  chrome-browser-warning.png

@@ -1,0 +1,624 @@
+{
+  "initial-setup": {
+    "title": "How to Get Started with your UNpkl router",
+    "lead": "Models may differ individually, however this set of instructions is common to all models unless expressly indicated.",
+    "sections": [
+      {
+        "id": "unpkl-router-setup",
+        "title": "Setting up your UNpkl Router",
+        "level": 2,
+        "html": "<ol><li>Unbox all contents of the package. Verify it includes your UNpkl device, a power adapter, and a network cable.</li><li>Install the UNpkl app from the App Store or Play Store on your smartphone.</li><li>Connect the supplied network cable to the WAN port on the router and the other end to your ISP modem LAN port or network switch.</li><li>Connect the power cord to power up your UNpkl router. Wait 2–3 minutes.</li></ol>"
+      },
+      {
+        "id": "first-time-app-setup",
+        "title": "Connecting for the first time using the app",
+        "level": 2,
+        "html": "<p>Locate the brochure that shipped with the package.</p><p>Connect to a UNpkl SSID before performing any of the following steps. The SSID and password are included in the brochure. You may scan the QR code to join the UNpkl Wi-Fi network using a smartphone.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"how-to-initial-setup-wifi-ssid.jpg\" alt=\"iPhone Settings screen showing a UNpkl Wi-Fi network with UNpkl- SSID prefix\"><figcaption>Connect to your UNpkl Wi-Fi network before continuing setup.</figcaption></figure><h3>Download the UNpkl app</h3><p>Once you join a UNpkl Wi-Fi network, download the UNpkl app and follow the in-app instructions to set up the router.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"how-to-initial-setup-mobile.jpg\" alt=\"UNpkl mobile app setup screens on a smartphone\"><figcaption>Follow the UNpkl app prompts to complete first-time setup.</figcaption></figure><p>It is preferable to use the app to set up the login and password (see Notes below). If you wish to use a web browser instead, continue with the next section.</p>"
+      },
+      {
+        "id": "admin-registration",
+        "title": "Admin registration and sign-in",
+        "level": 2,
+        "html": "<p>Connect your smart devices to the UNpkl network. When the router powers up, you can join using the SSID and password supplied in the brochure. You can change the SSID and password via the app or web browser at <a href=\"https://doohickey.yhioe.lan:4433\">https://doohickey.yhioe.lan:4433</a> or <a href=\"https://192.168.168.1:4433.\">https://192.168.168.1:4433.</a></p><ol><li>Once connected to the UNpkl SSID, launch the UNpkl app or web browser and complete the admin user registration process to sign in to the UNpkl admin UI.</li><li>After admin user registration is complete, we recommend enabling biometric authentication so you can easily access the UNpkl Admin app. This step is optional but recommended.</li></ol>"
+      },
+      {
+        "id": "setup-notes",
+        "title": "Notes",
+        "level": 2,
+        "html": "<p>Use alphanumeric characters without spaces for usernames and passwords. Example:</p><ul><li><strong>Username:</strong> SpongeBobSpatula</li><li><strong>Password:</strong> KwNs2GLFIOo3nQG6YZ15Xk</li></ul><p>The above is an example only. Set up using your own username and password.</p><p>Use alphanumeric characters, optionally with dashes (<code>-</code>) and dots (<code>.</code>), for SSIDs. Example:</p><ul><li><strong>SSID:</strong> My-Own-Personal-Space</li></ul><p>To reset your password, go to the reset link in the app or web interface, enter the new password, and answer the security questions you chose during setup. If your answers are correct, the password you entered becomes the new admin password.</p><p>If you forget your password and security questions, a hard reset with the reset button will not help, since it is assumed at that point that the appliance is compromised.</p><p>We are happy to help you reset the password if you email us. We will walk you through step-by-step instructions over the phone. If things get messy, we are happy to provide a replacement.</p>"
+      },
+      {
+        "id": "browser-security-warning",
+        "title": "Browser security warning",
+        "level": 2,
+        "html": "<p>If you see a browser warning (Chrome shown below) when accessing the UNpkl web service, click <strong>Advanced</strong> and then <strong>Proceed to doohickey.yhioe.lan (unsafe)</strong>.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"chrome-browser-warning.jpg\" alt=\"Chrome browser security warning page with Advanced and Proceed options\"><figcaption>Chrome &quot;Your connection is not private&quot; warning when opening the local UNpkl admin URL.</figcaption></figure>"
+      }
+    ],
+    "callouts": [
+      {
+        "type": "important",
+        "title": "Important",
+        "html": "<p>Connect to a UNpkl SSID before performing app setup or admin registration steps.</p>",
+        "position": "intro"
+      },
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Use the UNpkl mobile app for first-time setup when possible. It is the easiest way to create your admin login and password.</p>",
+        "after": "first-time-app-setup"
+      },
+      {
+        "type": "important",
+        "title": "Important",
+        "html": "<p>If you forget both your admin password and security question answers, a physical reset will not restore access. Contact UNpkl support for help.</p>",
+        "after": "setup-notes"
+      }
+    ],
+    "related": [
+      "unpkl-easymesh",
+      "troubleshooting",
+      "faq"
+    ]
+  },
+  "search-and-command": {
+    "title": "Search & command",
+    "lead": "Use **Search** in the UNpkl mobile app to control your local router with natural-language commands, ask questions about your network, and run in-app flows such as device provisioning. Commands are sent to the router as plain English phrases the firmware understands (SAC (search and command)).",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"how-to-search-and-command.jpg\" alt=\"Search and Command\"></figure><p>Search combines three paths:</p><ol><li><strong>Direct commands</strong> — phrases that match the router command vocabulary are sent to the router (<code>POST /c</code>) immediately (after confirmation when a reboot or brief Wi‑Fi interruption is expected).</li><li><strong>AI assistant</strong> — questions, follow-ups, and complex requests are handled by the local Search AI, which plans actions and runs them on <strong>this router only</strong> (not cloud fleet mode).</li><li><strong>App flows</strong> — scan, provision, return device, and subscription phrases open dedicated in-app wizards (middleware / QR), not raw router HTTP.</li></ol><p>You must be signed in to the <strong>local embedded router</strong> (connected to its Wi‑Fi or LAN). Cloud-only stats and multi-edge APIs are not available from local Search.</p>"
+      },
+      {
+        "id": "open-search",
+        "title": "Open Search",
+        "level": 2,
+        "html": "<ol><li>Open the UNpkl app while connected to your UNpkl router network.</li><li>Tap <strong>Search</strong> in the navigation bar (or use the search entry point on your device).</li><li>Type a command or question and submit.</li></ol><p><strong>Tips:</strong></p><ul><li>Ask <strong>how</strong> questions in plain English (for example, <code>How do I forward a port?</code>) — these route to the AI assistant instead of being sent blindly to the router.</li><li>Short follow-ups (<code>yes</code>, <code>show passwords</code>, <code>the second network</code>) stay in the AI conversation thread.</li><li>If a phrase is not in the app&#x27;s command list but may exist on newer firmware, the app can offer to send it <strong>directly to the router</strong> after you confirm.</li></ul>"
+      },
+      {
+        "id": "how-commands-work",
+        "title": "How router commands work",
+        "level": 2,
+        "html": "<p>Router control uses <strong>natural-language queries</strong> posted to <code>POST /c</code> as form field <code>query</code>. The SAC (search and command) engine on the device maps each phrase to an internal command hash (<code>YH_CMD_*</code> in firmware).</p><p><strong>Wording matters</strong> — use the same verbs and structure as the examples below. Hostnames (for example <code>Mac</code>) must match DHCP lease names on your router.</p><p><strong>Allow vs unblock:</strong> On port-access phrases, <strong>allow</strong> and <strong>unblock</strong> are synonyms. User intent to <strong>deny</strong>, <strong>stop</strong>, or block port access maps to <code>block access to port …</code>, not informal &quot;stop&quot; wording in the SAC command grammar.</p><p><strong>Read-only HTTP</strong> (no <code>/c</code> phrase): topology, live devices, history, policy tables, wireless config snapshot, cloud status, upgrade check — the AI uses dedicated GET routes when answering questions.</p>"
+      },
+      {
+        "id": "block-unblock",
+        "title": "Block and unblock",
+        "level": 2,
+        "html": "<p>Block destinations (websites, domains, apps) or specific source → destination pairs. Timed blocks use explicit units: <strong>minutes</strong>, <strong>hours</strong>, or <strong>days</strong>.</p><p><strong>Examples:</strong></p><ul><li><code>block somewebsite.com</code></li><li><code>block somewebsite.com for 2 hours</code></li><li><code>block source iPhone from destination social.example.com</code></li><li><code>block source from destination from time 9 pm to time 5 pm weekdays</code></li><li><code>block access to port 22</code></li><li><code>block access to port 443 from 192.168.1.10</code></li><li><code>unblock somewebsite.com</code></li><li><code>unblock source from destination</code></li><li><code>unblock access to port</code></li><li><code>unblock access to port only from 192.168.1.10</code></li></ul><p><strong>Schedules</strong> — combine source/destination with time windows and <strong>weekdays</strong>, <strong>weekends</strong>, or <strong>everyday</strong> (for example, <code>block source iPhone from destination social.example.com from time 9 pm to time 5 pm weekdays</code>).</p><p><strong>Block everything:</strong> <code>block all</code> / <code>unblock all</code>.</p>"
+      },
+      {
+        "id": "tag-assign",
+        "title": "Tag, assign, and rename devices",
+        "level": 2,
+        "html": "<p>Organize clients and destinations with tags and groups, or rename a source for easier Search.</p><p><strong>Examples:</strong></p><ul><li><code>tag destination news.example.com as News</code></li><li><code>tag source iPhone as Kids</code></li><li><code>untag destination news.example.com as News</code></li><li><code>untag source iPhone as Kids</code></li><li><code>assign source iPhone to Kids</code></li><li><code>unassign source iPhone</code></li><li><code>rename source iPhone as Johns-iPhone</code></li></ul>"
+      },
+      {
+        "id": "port-forwarding",
+        "title": "Port forwarding and firewall access",
+        "level": 2,
+        "html": "<p><strong>Port forwarding (DNAT)</strong> — expose a LAN service on a WAN port. Targets can be an IP, <code>host:port</code>, or a DHCP hostname.</p><ul><li><code>forward port 22 to 192.168.168.10:2622</code></li><li><code>forward port 44433 to Mac</code></li><li><code>forward port 80 to 192.168.168.1:2222</code></li><li><code>forward port to unblock traffic only from 192.168.1.5</code></li><li><code>unforward port 443</code></li><li><code>unforward port from 192.168.1.10</code></li></ul><p><strong>Firewall / port access</strong> — block or allow traffic to router services by port and optional source IP list.</p><ul><li><code>clear access to port 443</code></li><li><code>clear port 80</code></li><li><code>stop access to port 443</code></li><li><code>stop access to port from 10.0.0.5</code></li></ul><p>Related phrases: <code>clear access to port …</code>, <code>clear port …</code>, <code>unblock access to port only from …</code>, <code>unforward port … from …</code>.</p>"
+      },
+      {
+        "id": "wifi",
+        "title": "Wi‑Fi networks",
+        "level": 2,
+        "html": "<p>Manage SSIDs, passwords, VLAN IDs, and network count on 2.4 GHz, 5 GHz, or both bands.</p><p><strong>Examples:</strong></p><ul><li><code>set 3 wifi networks on 5ghz band</code></li><li><code>set 2 wifi networks on 2ghz band</code></li><li><code>set 3 wifi networks on both bands</code></li><li><code>add wifi network GuestNet with password secret123 on 5ghz band</code></li><li><code>delete wifi network on the 5ghz band</code></li><li><code>delete wifi network on the 2ghz band</code></li><li><code>change wifi setting psk for UNpkl-5LG-AP-1 to newwifipassword</code></li><li><code>change wifi setting ssid for UNpkl-5LG-AP-1 to MyWifiSSID</code></li><li><code>change wifi setting vlan id for UNpkl-5LG-AP-1 to 100</code></li></ul><p><strong>Add a network:</strong> <code>add wifi network &lt;ssid&gt; with password &lt;psk&gt; on &lt;band&gt; band</code> — password must be <strong>at least 8 characters</strong>, <strong>letters and digits only</strong> (no spaces or symbols). Default band is <strong>5 GHz</strong> if omitted.</p><p><strong>Changing an existing SSID</strong> (<code>change wifi setting psk|ssid|hidden|vlan …</code>) applies without reboot but may briefly disconnect clients.</p><p><strong>Adding networks, changing network count, or deleting SSIDs</strong> requires a <strong>router reboot</strong> to take effect. The app prompts before rebooting.</p><p><strong>Wi‑Fi join QR:</strong> Ask the AI for a scannable QR (for example, <code>show qr code for wifi on 5ghz</code>). Passphrases are only included after you explicitly confirm.</p>"
+      },
+      {
+        "id": "mesh",
+        "title": "Mesh and EasyMesh",
+        "level": 2,
+        "html": "<p>Control mesh controller and agent roles on supported hardware.</p><p><strong>Examples:</strong></p><ul><li><code>turn mesh on</code></li><li><code>turn agent on</code></li><li><code>turn controller on</code></li><li><code>turn mesh controller on</code></li></ul>"
+      },
+      {
+        "id": "wan-lan",
+        "title": "WAN, LAN, and device properties",
+        "level": 2,
+        "html": "<p>Configure static WAN addressing or LAN subnet.</p><p><strong>Examples:</strong></p><ul><li><code>add static wan ip 10.0.0.2 gateway 10.0.0.1 dns 8.8.8.8</code></li><li><code>unset static wan</code></li><li><code>set lan to 10.0.0.1/24</code></li><li><code>set device property floor as 2</code></li></ul><p>Other supported phrases include <code>refresh web certificate</code>, <code>set device property … as …</code>, and <code>clear all</code>.</p>"
+      },
+      {
+        "id": "upgrade-reboot-logging",
+        "title": "Upgrade, reboot, and logging",
+        "level": 2,
+        "html": "<p><strong>Firmware:</strong> <code>upgrade check</code>, <code>force upgrade</code>, <code>upgrade test</code>, <code>upgrade test check</code>.</p><p><strong>Reboot:</strong> Confirm before rebooting — you will be logged out. Required after some Wi‑Fi/WAN changes.</p><p><strong>Logging:</strong></p><ul><li><code>start logging</code></li><li><code>stop logging</code></li><li><code>start logging to file</code></li></ul><p>Ask the AI <strong>is cloud connected?</strong> or <strong>cloud status</strong> to read cloud registration without a <code>/c</code> command.</p>"
+      },
+      {
+        "id": "device-lifecycle",
+        "title": "Device scan, provisioning, and subscriptions",
+        "level": 2,
+        "html": "<p>These phrases open <strong>in-app flows</strong> (QR scanner, confirmations, middleware) — they are <strong>not</strong> sent as <code>POST /c</code> router commands.</p><p><strong>Scan / add / provision:</strong> <code>scan</code>, <code>scan device</code>, <code>scan new device</code>, <code>scan multiple devices</code>, <code>provision</code>, <code>add device</code></p><p><strong>Return / remove:</strong> <code>unprovision</code>, <code>unprovision device</code>, <code>return device</code>, <code>remove device</code></p><p><strong>Subscription billing:</strong> <code>pause subscription</code>, <code>cancel subscription</code>, <code>sync subscription</code>, <code>resume subscription</code></p><p>Use Search with one of the phrases above; follow on-screen steps.</p>"
+      },
+      {
+        "id": "ai-assistant",
+        "title": "AI assistant capabilities",
+        "level": 2,
+        "html": "<p>When your input is a question or needs multiple steps, local Search AI:</p><ol><li>Plans using router context (topology, live devices, network stats).</li><li>Runs allowed <strong>router actions</strong> on this device only.</li><li>Summarizes results in plain language (without exposing internal action names).</li></ol><p><strong>Supported router actions</strong> (30): <code>execute_command</code>, <code>get_topology</code>, <code>get_platform_id</code>, <code>get_sysinfo</code>, <code>get_history</code>, <code>get_live</code>, <code>check_upgrade</code>, <code>force_upgrade</code>, <code>reboot</code>, <code>exec</code>, … and <code>execute_command</code> for any other SAC command phrase.</p><p>Destructive shell commands via <code>exec</code> are blocked unless explicitly allowed. Wi‑Fi passwords require your confirmation before the AI displays them.</p>"
+      },
+      {
+        "id": "sac-phrase-templates",
+        "title": "SAC phrase templates",
+        "level": 2,
+        "html": "<p>The firmware matcher accepts 194 SAC phrase templates (source file <code>unsac_commands.txt</code> in firmware). Samples by leading verb:</p><p><strong>unblock</strong> — <code>unblock</code>, <code>unblock source</code>, <code>unblock source from destination</code>, <code>unblock source from destination from time pm to time pm</code>, <code>unblock source from destination from time pm to time am</code>, <code>unblock source from destination from time am to time pm</code>, <code>unblock source from destination from time am to time am</code>, <code>unblock source from destination from time am to time</code></p><p>- _34 additional <code>unblock</code> templates in firmware_</p><p><strong>block</strong> — <code>block</code>, <code>block source</code>, <code>block source from destination</code>, <code>block source from destination from time pm to time pm</code>, <code>block source from destination from time pm to time am</code>, <code>block source from destination from time am to time pm</code>, <code>block source from destination from time am to time am</code>, <code>block source from destination from time am to time</code></p><p>- _33 additional <code>block</code> templates in firmware_</p><p><strong>add</strong> — <code>add wifi network</code>, <code>add wifi network with password</code>, <code>add wifi network with password ssid</code>, <code>add wifi network with ssid</code>, <code>add wifi network with ssid password</code>, <code>add wifi network with ssid password on</code>, <code>add wifi network with ssid password on band</code>, <code>add wifi ssid</code></p><p>- _7 additional <code>add</code> templates in firmware_</p><p><strong>set</strong> — <code>set lan to</code>, <code>set</code>, <code>set n wifi networks on</code>, <code>set n wifi networks</code>, <code>set device property as</code>, <code>set device property</code>, <code>set n wifi</code>, <code>set n wifi networks on the</code></p><p>- _3 additional <code>set</code> templates in firmware_</p><p><strong>change</strong> — <code>change wifi setting password for</code>, <code>change wifi setting password for to</code>, <code>change wifi setting psk for</code>, <code>change wifi setting psk for to</code>, <code>change wifi setting ssid for</code>, <code>change wifi setting vlan for</code>, <code>change wifi setting vlan for to</code>, <code>change wifi setting vlan id for</code></p><p>- _2 additional <code>change</code> templates in firmware_</p><p><strong>turn</strong> — <code>turn mesh controller on</code>, <code>turn controller mesh on</code>, <code>turn controller on</code>, <code>turn agent mesh on</code>, <code>turn mesh agent on</code>, <code>turn agent on</code>, <code>turn mesh on</code>, <code>turn</code></p><p><strong>tag</strong> — <code>tag source as srcgroup</code>, <code>tag destination as dsttag</code>, <code>tag source as</code>, <code>tag destination as</code>, <code>tag</code>, <code>tag source</code>, <code>tag destination</code></p><p><strong>untag</strong> — <code>untag source as srcgroup</code>, <code>untag destination as dsttag</code>, <code>untag source as</code>, <code>untag destination as</code>, <code>untag</code>, <code>untag source</code>, <code>untag destination</code></p><p><strong>forward</strong> — <code>forward port to port</code>, <code>forward port to</code>, <code>forward port</code>, <code>forward port to port unblock traffic only from</code>, <code>forward port to unblock access only from</code>, <code>forward port to unblock traffic only from</code></p><p><strong>upgrade</strong> — <code>upgrade</code>, <code>upgrade test</code>, <code>upgrade test check</code>, <code>upgrade check</code>, <code>upgrade force</code></p><p><strong>assign</strong> — <code>assign source to srcgroup</code>, <code>assign source</code>, <code>assign source to</code>, <code>assign</code></p><p><strong>clear</strong> — <code>clear all</code>, <code>clear</code>, <code>clear access to port</code>, <code>clear port</code></p><p>Placeholders such as <code>source</code>, <code>destination</code>, <code>time</code>, <code>n</code>, and <code>port</code> stand in for your values. See <strong>Block and unblock</strong> and <strong>Wi‑Fi networks</strong> for filled-in examples.</p>"
+      },
+      {
+        "id": "firmware-commands",
+        "title": "Firmware command hashes",
+        "level": 2,
+        "html": "<p>Each accepted phrase resolves to a <code>YH_CMD_*</code> hash in <code>yh_unsac_hashes.h</code> (194 definitions). Examples:</p><ul><li><code>block source from destination</code></li><li><code>unblock source from destination</code></li><li><code>block source from destination from time pm to time pm</code></li><li><code>unblock source from destination from time pm to time pm</code></li><li><code>block source from destination from time pm to time am</code></li><li><code>unblock source from destination from time pm to time am</code></li></ul><p>The app and docs stay aligned with firmware sources (<code>yh_unsac_hashes.h</code>, <code>unsac_commands.txt</code>) when commands are added or renamed. Those filenames use the internal UNSAC name; documentation refers to the feature as SAC (search and command).</p>"
+      },
+      {
+        "id": "confirmations",
+        "title": "Confirmations and errors",
+        "level": 2,
+        "html": "<p><strong>Reboot prompt</strong> — After <code>add wifi network</code>, <code>set N wifi networks</code>, <code>delete wifi network</code>, or static WAN changes, reply <strong>yes</strong> / <strong>now</strong> to reboot immediately, <strong>later</strong> / <strong>no</strong> to apply without rebooting now, or <strong>cancel</strong> to abort.</p><p><strong>Wi‑Fi setting changes</strong> — <code>change wifi setting …</code> may interrupt connections briefly; no reboot required.</p><p><strong>Invalid command</strong> — Router may return <code>invalid command</code> or <code>uh oh</code> in the response message even with HTTP 200.</p><p><strong>Direct send</strong> — Unknown phrases can still be tried on the router if you confirm when prompted.</p>"
+      }
+    ],
+    "related": [
+      "settings-and-charts",
+      "live-data",
+      "faq"
+    ],
+    "callouts": []
+  },
+  "settings-and-charts": {
+    "title": "Settings & charts",
+    "lead": "Use the **Settings** and **Charts** tabs in the UNpkl mobile app to configure your router, manage AI for Search, and review network activity over time.",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<p>The bottom navigation includes <strong>Settings</strong> (device configuration, AI, and network actions) and <strong>Charts</strong> (historical traffic and DNS summaries). Both tabs work when you are signed in to your local UNpkl router.</p>"
+      },
+      {
+        "id": "open-settings",
+        "title": "Open Settings and Charts",
+        "level": 2,
+        "html": "<ol><li>Open the UNpkl app while connected to your UNpkl router network.</li><li>Tap <strong>Settings</strong> in the bottom bar for configuration panels.</li><li>Tap <strong>Charts</strong> for network activity and DNS visualizations.</li></ol><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"settings.jpg\" alt=\"UNpkl Settings screen with Device Settings, Network Management, and SSH modal\"><figcaption>Settings lists device options and network actions; tap <strong>SSH</strong> to open SSH key and password settings.</figcaption></figure>"
+      },
+      {
+        "id": "device-settings",
+        "title": "Device settings",
+        "level": 2,
+        "html": "<p>Under <strong>Device Settings</strong> on the Settings tab:</p><ul><li><strong>Enable Biometrics</strong> — turn on Face ID, Touch ID, or your device’s biometric unlock for faster sign-in to the admin app.</li><li><strong>AI settings</strong> — expand to configure Search AI (see the next section). Shown for local (non-cloud) router sessions.</li><li><strong>Download IP Maps Data</strong> / <strong>Delete IP Maps Data</strong> — download or remove the on-device IP geolocation database used for map and location features. Tap again to toggle between download and delete when data is present.</li></ul><p>Cloud users also see a profile header and <strong>Cloud Management</strong> options (for example <strong>Approve Requests</strong>) above these sections.</p>"
+      },
+      {
+        "id": "ai-settings",
+        "title": "AI settings",
+        "level": 2,
+        "html": "<p>Expand <strong>AI settings</strong> under Device Settings to control how Search uses external AI on your local router.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"ai-settings.jpg\" alt=\"AI settings panel with toggles and OpenAI-compatible API fields\"><figcaption>Configure Search AI middleware, redaction, and optional custom chat endpoints.</figcaption></figure><p><strong>Disable external AI (Search)</strong> — when on, natural-language Search will not call external AI. Router SAC commands still work.</p><p><strong>Redact sensitive data for AI</strong> — when on (recommended), Wi‑Fi passwords and similar secrets are removed from data sent to external AI. Turn off only for trusted local models on your LAN.</p><h4>Assistant (Search)</h4><p>By default, Search AI uses UNpkl middleware (the OpenRouter key stays on the server). Optionally set a custom OpenAI-compatible chat URL; Bearer keys are stored in the device keychain.</p><ul><li><strong>Chat completions URL</strong> — leave blank for the middleware proxy default, or enter your provider’s chat completions endpoint.</li><li><strong>Model id (optional)</strong> — override the default model (placeholder shows the default OpenRouter model name).</li><li><strong>API key (Bearer)</strong> — enter a Bearer token if your provider requires one, then tap <strong>Save API key</strong>. Use <strong>Clear saved key</strong> when a key is already stored and the field is empty.</li><li><strong>Restore middleware defaults</strong> — reset the endpoint, model, and saved key to UNpkl middleware defaults.</li></ul><p>For command examples and Search behavior, see <strong>Search &amp; command</strong>.</p>"
+      },
+      {
+        "id": "network-management",
+        "title": "Network management",
+        "level": 2,
+        "html": "<p>The <strong>Network Management</strong> section on Settings includes:</p><ul><li><strong>Wireless</strong> — open Wi‑Fi SSID, password, and radio settings for your UNpkl network.</li><li><strong>SSH</strong> — view or paste an SSH public key, enable password authentication, and set an SSH password. Tap <strong>Save Settings</strong> to apply.</li><li><strong>Upgrade Firmware</strong> — check for and install firmware updates from UNpkl. Confirm when prompted; the device may reboot.</li><li><strong>Reboot Device</strong> — restart the router. Active connections will drop briefly.</li></ul><p><strong>Account Actions</strong> at the bottom of Settings includes <strong>Log Out</strong>.</p>"
+      },
+      {
+        "id": "charts",
+        "title": "Charts",
+        "level": 2,
+        "html": "<p>Open the <strong>Charts</strong> tab to review historical data from your router.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"charts.jpg\" alt=\"UNpkl Charts tab showing connection activity and DNS query distribution\"><figcaption>The Charts tab summarizes connection trends and top DNS lookups for the selected time window.</figcaption></figure><p>At the top, use the <strong>device filter</strong> to view all devices or focus on one client.</p><p><strong>Network Activity</strong> — line chart of active connections over time, with <strong>Current Window</strong> and <strong>Connections/sec</strong> summary cards below the graph.</p><p><strong>DNS Query Distribution</strong> — donut chart of DNS lookups by domain, with a legend showing each hostname, its share of queries, and the query count.</p><p>Charts complement <strong>Live data</strong> (real-time flows) and Search queries about traffic history. Use Charts for trends; use Live data to inspect individual connections as they happen.</p>"
+      }
+    ],
+    "related": [
+      "live-data",
+      "search-and-command",
+      "unpkl-easymesh"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Apply firmware upgrades and reboots during a maintenance window. Wireless and SSH changes can briefly interrupt connections.</p>",
+        "position": "intro"
+      }
+    ]
+  },
+  "live-data": {
+    "title": "Live data",
+    "lead": "Use the **Live Data**, **Topology**, and **Maps** views in the UNpkl mobile app to watch network activity as it happens, see how devices connect, and explore where traffic goes.",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"live-data.jpg\" alt=\"UNpkl Live Data list, Topology diagram, and Maps view on three phones\"><figcaption>Live Data, Topology, and Maps work together to show who is on your network, how they connect, and where traffic goes.</figcaption></figure><p>The <strong>Live Data</strong> tab in the bottom navigation is your real-time monitoring home. It has two sub-tabs:</p><ul><li><strong>Live Data</strong> — a scrolling list of devices and their recent destinations (websites, DNS names, and connections).</li><li><strong>Topology</strong> — a diagram of your network: internet gateway, UNpkl router(s), mesh agents, and connected clients.</li></ul><p>The separate <strong>Maps</strong> tab plots live traffic on a world map when location data is available.</p>"
+      },
+      {
+        "id": "open-live-data",
+        "title": "Open Live Data",
+        "level": 2,
+        "html": "<ol><li>Open the UNpkl app while signed in to your UNpkl router (or cloud account).</li><li>Tap <strong>Live Data</strong> in the bottom navigation.</li><li>Use the <strong>Live Data</strong> or <strong>Topology</strong> sub-tab at the top of the screen.</li></ol><p>The header also includes:</p><ul><li><strong>Search</strong> (magnifying glass) — open Search to run commands or ask questions about your network.</li><li><strong>Play / Pause</strong> — start or stop live updates for both the device list and topology.</li></ul><p>If data is still loading, wait a few seconds. The app retries automatically when the connection returns.</p>"
+      },
+      {
+        "id": "live-data-list",
+        "title": "Live Data list",
+        "level": 2,
+        "html": "<p>The <strong>Live Data</strong> sub-tab groups activity by device on your network.</p><p>Each device card shows:</p><ul><li><strong>Hostname</strong> — the name your router knows for the client (from DHCP or your own rename in Search).</li><li><strong>IP address</strong> and <strong>MAC address</strong></li><li><strong>Recent destinations</strong> — up to five of the latest sites or services that device contacted, with timestamps and repeat counts when the same name appears often.</li></ul><p>Devices with recent activity are highlighted with a green edge. Devices with no recent traffic appear dimmer.</p><p>Tap the arrow on a device card to open the full destination list for that client.</p><p>A summary bar above the list shows how many devices are visible and how many live updates have been received.</p>"
+      },
+      {
+        "id": "dns-only",
+        "title": "DNS only",
+        "level": 2,
+        "html": "<p>Turn <strong>DNS only</strong> on to hide destination rows that are plain IP addresses and show DNS hostnames instead. This makes the list easier to read when you care about site names rather than raw IPs.</p><p>Turn <strong>DNS only</strong> off to see every destination name, including IP literals.</p>"
+      },
+      {
+        "id": "topology",
+        "title": "Topology",
+        "level": 2,
+        "html": "<p>Switch to the <strong>Topology</strong> sub-tab to see a map of how your network is wired together.</p><p>Typical nodes include:</p><ul><li><strong>Internet</strong> — your upstream connection</li><li><strong>Controller</strong> — the main UNpkl router</li><li><strong>Agent</strong> — mesh Wi‑Fi access points (EasyMesh setups)</li><li><strong>Device</strong> — phones, laptops, and other clients</li></ul><p><strong>Explore the diagram:</strong></p><ul><li>Pinch or use zoom controls to magnify dense areas.</li><li>Drag the canvas to pan around.</li><li>Drag individual nodes to rearrange them; positions are remembered on your phone.</li></ul><p><strong>Tap a node</strong> to open details. For client devices you can:</p><ul><li><strong>Show Policy</strong> — view tags, blocks, and policy matches applied to that device.</li><li><strong>Block Device</strong> / <strong>Unblock Device</strong> — quickly stop or restore network access for that client.</li></ul><p>If topology refresh is temporarily unavailable, the app may show the last successful snapshot with a time hint until new data arrives.</p><p>From <strong>Search</strong>, when the assistant finds a device you can tap <strong>Open in Topology</strong> to jump here and highlight that client (nothing opens automatically—you choose when to navigate).</p><p>For mesh layout and hardware placement, see <strong>UNpkl EasyMesh</strong>.</p>"
+      },
+      {
+        "id": "maps",
+        "title": "Maps",
+        "level": 2,
+        "html": "<p>Tap <strong>Maps</strong> in the bottom navigation to see live traffic on a world map.</p><p><strong>First-time setup:</strong> the map uses an on-device IP location database. Download it once from <strong>Settings</strong> → <strong>Download IP Maps Data</strong> (see <strong>Settings &amp; charts</strong>). When the database is installed, return to <strong>Maps</strong> to see pins.</p><p>While the Maps tab is open, live records from your router feed the map. A banner shows how many live records and map pins are active.</p><ul><li><strong>Local router</strong> — pins are placed by country (or region) from the GeoIP database. Private LAN addresses appear under <strong>Local or unknown IP</strong>.</li><li><strong>Cloud</strong> — pins reflect geolocated flows from your cloud-connected edges.</li></ul><p>Tap a pin or country cluster to zoom in and, when available, see which devices and destinations contributed to that region.</p><p>The number of map pins can be lower than the live record count when many flows share the same location or IP.</p>"
+      },
+      {
+        "id": "troubleshooting-tips",
+        "title": "Troubleshooting tips",
+        "level": 2,
+        "html": "<ul><li><strong>No devices yet</strong> — confirm you are on the UNpkl Wi‑Fi or LAN and signed in. Tap <strong>play</strong> if the stream was paused.</li><li><strong>Empty map</strong> — download <strong>IP Maps Data</strong> in Settings, then reopen Maps.</li><li><strong>Topology empty</strong> — wait for the first refresh, or check that the router is online. Pause and play once to retry.</li></ul><p>For broader connection issues, see <strong>Troubleshooting</strong>.</p>"
+      }
+    ],
+    "related": [
+      "search-and-command",
+      "settings-and-charts",
+      "troubleshooting"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Tap the <strong>pause</strong> icon in the header to freeze updates while you read a row or explore the topology. Tap <strong>play</strong> to resume the live stream.</p>",
+        "position": "intro"
+      }
+    ]
+  },
+  "unpkl-saas": {
+    "title": "UNpkl SaaS",
+    "lead": "End-to-end deployment for the UNpkl Gateway system: hardware and mesh setup, enterprise subscription, cloud provisioning, and live monitoring from the UNpkl app.",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<p>This guide walks through the full enterprise workflow—from acquiring gateways and access points to enrolling a subscription, linking hardware to your account, and viewing live data in the dashboard.</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"wifi7-office-deployment.jpg\" alt=\"UNpkl Wi-Fi 7 office deployment with gateways, mesh APs, and cloud connectivity\"><figcaption>Typical office deployment: UNpkl gateways as controllers, mesh APs for coverage, and cloud-backed monitoring.</figcaption></figure><p>The five steps below follow the order most customers use:</p><ol><li><strong>Hardware acquisition</strong> — purchase and rack UNpkl gateways.</li><li><strong>Mesh infrastructure</strong> — install APs and secure mesh backhaul.</li><li><strong>Subscription enrollment</strong> — create an account and choose a plan.</li><li><strong>Cloud provisioning</strong> — scan each controller and link it to your subscription.</li><li><strong>Live monitoring</strong> — confirm the gateway is streaming metrics to the cloud.</li></ol>"
+      },
+      {
+        "id": "hardware-acquisition",
+        "title": "Step 1: Hardware acquisition",
+        "level": 2,
+        "html": "<p>Customers purchase UNpkl Gateways in bulk for high-capacity enterprise environments.</p><p><strong>Hardware specs:</strong></p><ul><li><strong>Chipset</strong> — mt7988-based platforms built for throughput and policy enforcement at the edge.</li><li><strong>WAN connectivity</strong> — fiber optic, Ethernet, and 5G options depending on site requirements.</li><li><strong>Controller role</strong> — every gateway ships pre-configured during manufacturing to act as the central network controller for its site.</li></ul><p>Install controllers where they have reliable upstream WAN access and a clear path to mesh APs on your LAN or PoE plant.</p>"
+      },
+      {
+        "id": "mesh-infrastructure",
+        "title": "Step 2: Mesh infrastructure and AP installation",
+        "level": 2,
+        "html": "<p>Expand coverage with <strong>AP103</strong> access points (or compatible UNpkl mesh agents) so Wi‑Fi reaches the full floor plan.</p><p><strong>Connectivity</strong> — connect APs to a smart PoE switch so power and data ride on the same cable run.</p><p><strong>Mesh security</strong> — each unit joins the deployment as a mesh agent. Every mesh link uses a unique <strong>SAE secret</strong> for the backhaul so neighbor networks cannot join your mesh accidentally.</p><p>For placement, radio planning, and agent roles, see <strong>UNpkl EasyMesh</strong>.</p>"
+      },
+      {
+        "id": "subscription-enrollment",
+        "title": "Step 3: Enterprise subscription enrollment",
+        "level": 2,
+        "html": "<p>Before provisioning hardware, activate a UNpkl service plan tied to your organization.</p><ol><li><strong>Choose a pricing plan</strong> that matches your gateway count and support tier.</li><li><strong>Sign up</strong> using the UNpkl <strong>iOS app</strong>, <strong>Android app</strong>, or <strong>web client</strong>.</li><li><strong>Verify your email</strong> when prompted so account recovery and billing notices reach the right inbox.</li><li><strong>Select and confirm your plan</strong> — billing and subscription management stay in the same apps going forward.</li></ol><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"subscription.jpg\" alt=\"Account creation, email verification, and plan selection in the UNpkl app\"><figcaption>Create your account, verify email, and pick the plan that fits your deployment.</figcaption></figure><p>You can return to the app or web client later to update payment details or change plans.</p>"
+      },
+      {
+        "id": "cloud-provisioning",
+        "title": "Step 4: Cloud provisioning and QR scanning",
+        "level": 2,
+        "html": "<p>Associate each controller with your account using Search in the UNpkl app.</p><ol><li>Open <strong>Search</strong> (from the Live Data header or your app’s search entry point).</li><li>Enter the command <strong>Scan device</strong> (or tap the scan suggestion when shown).</li><li><strong>Scan the QR code</strong> included in each controller package when the camera opens.</li><li>Wait for confirmation — the gateway links to your email and active subscription.</li></ol><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"provision.jpg\" alt=\"Scan device flow and QR provisioning in the UNpkl app\"><figcaption>Use <strong>Scan device</strong> and the package QR code to register each controller.</figcaption></figure><p><strong>Cloud endpoint</strong> — after a successful scan, the cloud assigns the device to the nearest geographical data endpoint for your region (for example <code><a href=\"https://ukeast-01.unpkl.io:44433\">https://ukeast-01.unpkl.io:44433</a></code>). The gateway uses that endpoint for ongoing sync; you do not need to pick the URL manually.</p><p>Repeat the scan step for every controller in the deployment. Mesh agents discovered by an already-provisioned controller appear in topology without a separate QR scan.</p><p>For remote fleet management after provisioning, see <strong>UNpkl Cloud</strong>.</p>"
+      },
+      {
+        "id": "live-monitoring",
+        "title": "Step 5: Live monitoring and data reporting",
+        "level": 2,
+        "html": "<p>Once provisioning finishes, the Wi‑Fi controller enters its monitoring phase.</p><p><strong>Automated sync</strong> — the gateway periodically checks the cloud for its assigned endpoint and credentials.</p><p><strong>Live stream</strong> — when the endpoint is reachable, the controller sends live data, network metrics, and device health to your UNpkl dashboard.</p><p>In the mobile app:</p><ul><li>Open <strong>Live Data</strong> for per-device traffic and topology.</li><li>Open <strong>Maps</strong> for geolocated flows (cloud deployments show server-side geolocation).</li><li>Open <strong>Charts</strong> for trends over time.</li></ul><p>If the stream does not appear within a few minutes, confirm WAN connectivity on the gateway, that subscription status is active, and that provisioning completed for that unit. See <strong>Live data</strong> and <strong>Troubleshooting</strong> for more help.</p>"
+      }
+    ],
+    "related": [
+      "unpkl-cloud",
+      "unpkl-easymesh",
+      "live-data"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Complete subscription enrollment (Step 3) before scanning devices (Step 4). The cloud assigns each gateway to your account and nearest regional endpoint only after both are in place.</p>",
+        "position": "intro"
+      }
+    ]
+  },
+  "unpkl-cloud": {
+    "title": "UNpkl Cloud",
+    "lead": "Manage your provisioned UNpkl gateways from the **Partner Portal** and mobile app—live traffic, maps, topology, security logs, and automation in one place.",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<p>UNpkl Cloud is the online control plane for gateways you have subscribed and provisioned (see <strong>UNpkl SaaS</strong>). Once a controller is linked to your account, it sends live network data to the nearest regional cloud endpoint. You sign in to the portal or app to see what is happening across your sites.</p><p>The cloud keeps your account, devices, subscriptions, and audit history together. UNpkl <strong>middleware</strong> sits between the portal, mobile app, and cloud services—it handles sign-in, routes requests to the right regional endpoint, and powers features such as the cloud <strong>AI assistant</strong> using your organization context.</p><p>At a glance, UNpkl Cloud helps you:</p><ul><li>See which networks are online and whether anything needs attention</li><li>Watch live device activity, maps, topology, and connection trends</li><li>Review what was blocked and why (ads, trackers, malicious destinations, or your own rules)</li><li>Describe monitoring or automation jobs in plain language</li></ul>"
+      },
+      {
+        "id": "sign-in",
+        "title": "Sign in to the Partner Portal",
+        "level": 2,
+        "html": "<p>Open the UNpkl Partner Portal in a web browser and sign in with the same email you used for subscription enrollment.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"cloud-01-login.jpg\" alt=\"UNpkl Partner Portal login with email, password, and social sign-in options\"><figcaption>Sign in with email and password, or use Google, GitHub, or Microsoft if your organization allows it.</figcaption></figure><p>Use <strong>Account Sign up or Reset</strong> if you need to create an account or recover access. <strong>Clear Auth &amp; Start Fresh</strong> helps when a browser session is stuck during troubleshooting.</p>"
+      },
+      {
+        "id": "home-dashboard",
+        "title": "Home dashboard",
+        "level": 2,
+        "html": "<p>After sign-in, the <strong>Home</strong> tab shows a summary of your organization—the <strong>Network Operations Command Center</strong>.</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"cloud-01-logio.jpg\" alt=\"Partner Portal home dashboard with networks, jobs, metrics, and audit preview\"><figcaption>The home dashboard highlights items that need attention and summarizes registered networks.</figcaption></figure><p><strong>Need Attention</strong> — alerts and jobs that may require a follow-up (for example pending approvals or failed tasks).</p><p><strong>Networks</strong> — how many gateways are registered and online, with a quick security status.</p><p><strong>Jobs</strong> — scheduled or custom monitoring and automation tasks running on your edges.</p><p><strong>Metrics</strong> — recorded measurements from those jobs (bandwidth, health checks, and similar).</p><p><strong>Audit logs</strong> — a preview of recent blocklist and policy events from your gateways; open the full audit view for details.</p><p>Use the top navigation to move between <strong>Home</strong>, <strong>Subscription</strong>, <strong>Live</strong>, and <strong>Jobs</strong>.</p>"
+      },
+      {
+        "id": "live-monitoring",
+        "title": "Live monitoring",
+        "level": 2,
+        "html": "<p>The <strong>Live</strong> tab combines four views on one screen so you can monitor activity without switching tools.</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"cloud-02-dashboard.jpg\" alt=\"Live dashboard with device list, world map, topology graph, and connection chart\"><figcaption>Live, Maps, Topology, and Connections update together from your provisioned gateways.</figcaption></figure><p><strong>Live</strong> — devices on your networks and their recent destinations (websites and DNS names). Toggle <strong>DNS only</strong> to hide plain IP addresses and focus on site names. This mirrors what you see in the mobile app’s <strong>Live data</strong> tab, aggregated for cloud fleets.</p><p><strong>Maps</strong> — where traffic is going geographically. Markers show countries and regions your devices contact; useful for multi-site or roaming deployments.</p><p><strong>Topology</strong> — how gateways, mesh agents, and clients connect back to the internet. Search by hostname, MAC, or IP to find a device quickly.</p><p><strong>Connections</strong> — a live chart of active connections per gateway (hostname), so you can spot spikes or drops over time.</p><p>The mobile app offers the same live views when signed in with your cloud account. See <strong>Live data</strong> for app-specific tips.</p>"
+      },
+      {
+        "id": "audit-logs",
+        "title": "Security and audit logs",
+        "level": 2,
+        "html": "<p>UNpkl Cloud applies layered protection on your gateways: known malicious addresses, category blocklists, and optional <strong>custom rules</strong> you upload for your organization. When traffic is stopped, an audit entry records what happened.</p><p>Open <strong>Live</strong> → <strong>Audit logs</strong> to inspect events by device.</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"cloud-04-block.jpg\" alt=\"Audit log for a Roku TV showing blocked ad and tracker domains\"><figcaption>Each row shows when a device tried to reach a destination, what was blocked, and the matching rule.</figcaption></figure><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"cloud-05-block.jpg\" alt=\"Audit log for a laptop showing blocked tracking and ad domains\"><figcaption>The same view works for any client on your network—phones, TVs, laptops, and IoT devices.</figcaption></figure><p>Columns mean:</p><ul><li><strong>Time</strong> — when the event occurred</li><li><strong>Source</strong> — the device that made the request (internal IP)</li><li><strong>Target</strong> — the site or service it tried to reach</li><li><strong>Action</strong> — typically <strong>block</strong> when a rule matched</li><li><strong>Match / command</strong> — why it matched (for example an exact DNS block)</li></ul><p>Custom allow lists can override system blocks when you need a trusted partner or internal service to stay reachable. Organization administrators manage those rules from the portal or API.</p>"
+      },
+      {
+        "id": "ai-assistant",
+        "title": "AI assistant",
+        "level": 2,
+        "html": "<p>The <strong>AI assistant</strong> (bottom-right in the portal) helps you work in plain English instead of memorizing menus. It can use your subscription and device context when you ask about networks, jobs, maps, or security.</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"cloud=06-ai-assist.jpg\" alt=\"AI assistant panel for describing monitoring jobs and opening the job catalog\"><figcaption>Describe what you want to monitor or automate, or browse ready-made templates in the job catalog.</figcaption></figure><p>Examples of what you can ask:</p><ul><li>Chart WAN bandwidth on a schedule</li><li>Summarize which devices generated the most blocks today</li><li>Open the job catalog for a pre-built monitoring template</li></ul><p>Press <strong>Enter</strong> to send a message; <strong>Shift+Enter</strong> adds a new line. Use <strong>Attach</strong> when you need to include a file with your request.</p><p>Cloud Search in the mobile app follows a similar idea for fleet operators; local router Search is documented under <strong>Search &amp; command</strong>.</p>"
+      },
+      {
+        "id": "how-it-fits",
+        "title": "How cloud and middleware fit together",
+        "level": 2,
+        "html": "<p>You do not need to pick a regional server URL yourself. After provisioning, each gateway learns its assigned endpoint (for example a host like <code>ukeast-01.unpkl.io</code>) and streams data there automatically.</p><ul><li><strong>Gateway</strong> — enforces policy on your LAN and sends live metrics and audit events upstream</li><li><strong>Cloud</strong> — stores accounts, devices, subscriptions, statistics, and audit history</li><li><strong>Middleware</strong> — connects the portal and app to cloud services, including cloud AI chat</li><li><strong>Partner Portal</strong> — web dashboard for fleet overview, live views, jobs, and audit logs</li><li><strong>Mobile app</strong> — Live data, maps, topology, charts, and Search when signed in as a cloud user</li></ul><p>If live data is missing, confirm the gateway is online, provisioning completed, and your subscription is active. See <strong>UNpkl SaaS</strong> for enrollment and scanning steps, and <strong>Troubleshooting</strong> for connection help.</p>"
+      }
+    ],
+    "related": [
+      "unpkl-saas",
+      "live-data",
+      "search-and-command"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Complete subscription enrollment and device provisioning before using the portal. Gateways must be linked to your account before live data appears here or in the mobile app.</p>",
+        "position": "intro"
+      }
+    ]
+  },
+  "unpkl-easymesh": {
+    "title": "UNpkl EasyMesh",
+    "lead": "Extend Wi‑Fi coverage across your home or office with UNpkl **EasyMesh**—one shared network name, secure mesh backhaul, and automatic routing to the main gateway (**controller**).",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "level": 2,
+        "html": "<p>EasyMesh is relevant when you add UNpkl Wi‑Fi access points that should work as <strong>agents</strong> (mesh extenders) under a single <strong>controller</strong> gateway.</p><p>In plain terms, an EasyMesh agent is a Wi‑Fi extender with stronger security than a typical repeater: agents discover the controller automatically, use encrypted backhaul links, and inherit Wi‑Fi settings from the controller once paired.</p><p>Typical layout:</p><ul><li><strong>Controller</strong> — the UNpkl gateway connected to your ISP (WAN). It runs policy, DHCP, and cloud sync.</li><li><strong>Agent(s)</strong> — ceiling‑mount or PoE access points that extend coverage. Clients roam between controller and agents on the same SSIDs.</li></ul><p>Common sizes:</p><ul><li>1 controller + 1 agent</li><li>1 controller + 2 agents (common retail <strong>mesh package</strong>)</li><li>1 controller + 3 or more agents for larger floors</li></ul><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"easymesh.jpg\" alt=\"EasyMesh layout with one controller, Wi-Fi mesh backhaul, and two agents\"><figcaption>One controller on the WAN; agents join over wired or encrypted Wi‑Fi mesh backhaul.</figcaption></figure><p>Enterprise deployments often use a <strong>UNpkl Gateway controller</strong>, a <strong>PoE switch</strong>, and multiple <strong>AP103</strong> (or compatible) ceiling agents—see <strong>UNpkl SaaS</strong> for that workflow.</p>"
+      },
+      {
+        "id": "roles",
+        "title": "Controller and agent roles",
+        "level": 2,
+        "html": "<p>Every UNpkl unit can act as either:</p><ul><li><strong>Controller</strong> — main router on your WAN link; owns the mesh and customer Wi‑Fi networks</li><li><strong>Agent</strong> — extends Wi‑Fi; connects to the controller over wired LAN or a private <strong>backhaul</strong> SSID</li></ul><p><code>turn agent on</code> sets the device role to <strong>agent</strong> and turns it into a <strong>wireless switch</strong>: it bridges client Wi‑Fi while the controller remains the gateway.</p><p>There are two ways to add an agent. Prefer <strong>Option 1</strong> (wired LAN) when you can temporarily cable the units together—backhaul settings sync automatically. Use <strong>Option 2</strong> when the agent must join over Wi‑Fi only (you copy the controller’s backhaul SSID and PSK onto the agent first).</p><figure class=\"unpkl-docs-figure\"><img class=\"unpkl-docs-image\" src=\"brochure.jpg\" alt=\"Router brochure showing backhaul SSID and backhaul PSK for mesh setup\"><figcaption>Keep the controller brochure. You need its backhaul SSID and PSK only for <strong>Option 2</strong> (wireless pairing).</figcaption></figure><p>UNpkl configures controllers at the factory with <code>turn controller on</code>, so you usually do not need to change the controller role yourself.</p>"
+      },
+      {
+        "id": "hardware",
+        "title": "What you need",
+        "level": 2,
+        "html": "<p>Buy <strong>two or more</strong> UNpkl Wi‑Fi access points when you want mesh coverage (one gateway plus at least one agent).</p><p>Access points are available from the UNpkl store or authorized retailers. For permanent wired backhaul to agents, use a <strong>PoE switch</strong> so power and data share one cable run to ceiling mounts.</p><p>You will need:</p><ul><li>The <strong>controller</strong> (gateway already on your WAN / ISP)</li><li>The UNpkl mobile app or local web UI with <strong>Search</strong></li><li>For <strong>Option 1</strong>: an Ethernet cable between the agent’s <strong>LAN</strong> port and the controller’s <strong>LAN</strong> port (temporary for sync, or leave it for wired backhaul)</li><li>For <strong>Option 2</strong>: the <strong>controller</strong> brochure and each <strong>agent</strong> brochure (factory backhaul SSID and PSK)</li></ul>"
+      },
+      {
+        "id": "controller-setup",
+        "title": "Set up the controller",
+        "level": 2,
+        "html": "<ol><li>Complete <strong>Initial setup</strong> on the gateway that will be your controller (WAN, admin login, Wi‑Fi).</li><li>Confirm it has internet access and that you can open <strong>Search</strong> on the app or web UI.</li><li>Leave the device in <strong>controller</strong> role (factory default).</li></ol><p>If you are unsure, open <strong>Live data</strong> → <strong>Topology</strong> after agents join—you should see the controller at the top of the mesh tree.</p>"
+      },
+      {
+        "id": "agent-setup",
+        "title": "Set up an agent",
+        "level": 2,
+        "html": "<p>Configure <strong>one agent at a time</strong>. UNpkl units ship as controllers; the steps below convert an extra unit into an agent under your main gateway.</p><h4>Option 1 — Wired LAN (recommended)</h4><p>Easiest path: convert the unit to an agent, then let the controller push backhaul settings over Ethernet.</p><ol><li>Connect your phone or laptop to the <strong>unit that will become the agent</strong> (not the main gateway). Join that unit’s Wi‑Fi or plug Ethernet into its LAN port, then open the UNpkl app.</li><li>Open <strong>Search</strong> and run: <code>turn agent on</code></li></ol><p>The device reboots and becomes an <strong>agent</strong> (wireless switch role).</p><ol><li>Connect an Ethernet cable from the <strong>agent’s LAN</strong> port to a <strong>LAN</strong> port on the <strong>controller</strong>.</li></ol><p>After that link is up, backhaul settings sync automatically from the controller to the agent. You do <strong>not</strong> need to copy backhaul SSID or PSK by hand.</p><p>Leave the cable connected for wired backhaul, or unplug after sync if you want the agent to use Wi‑Fi backhaul later (confirm the agent still appears under the controller in <strong>Topology</strong>).</p><div class=\"unpkl-docs-callout unpkl-docs-callout--important\"><p class=\"unpkl-docs-callout__title\">Important</p><p>After <code>turn agent on</code>, the unit cannot be switched back to a controller without advanced manual steps. Make sure you ran the command on the <strong>extra</strong> device, not on your main gateway.</p></div><h4>Option 2 — Wireless backhaul (manual credentials)</h4><p>Use this when you cannot cable the agent to the controller and must join over Wi‑Fi. Retarget the agent’s factory backhaul credentials to match the <strong>controller</strong> brochure, then enable the agent role.</p><p>#### Connect to the agent</p><ol><li>Connect your laptop or phone to the agent you are configuring—preferably over <strong>Ethernet</strong> to the agent’s LAN port. If you use Wi‑Fi, be sure you joined <strong>that agent’s</strong> network, not the controller’s.</li><li>Sign in to the UNpkl app or web UI on the agent.</li><li>Open <strong>Search</strong>.</li></ol><p>#### Point the agent at the controller backhaul</p><p>From the agent’s Search box, run two commands (replace placeholders with values from the brochures):</p><ul><li><code>change wifi setting ssid for &lt;Current Backhaul SSID&gt; to &lt;Controller Backhaul SSID&gt;</code></li><li><code>change wifi setting psk for &lt;Current Backhaul PSK&gt; to &lt;Controller Backhaul PSK&gt;</code></li></ul><p><strong>Example</strong> (names will differ on your devices):</p><ul><li>Agent brochure might show <strong>Backhaul SSID:</strong> <code>UNpkl-AP-123456-1</code> and <strong>Backhaul PSK:</strong> <code>abcdefghijklmnop</code></li><li>Controller brochure shows <strong>Backhaul SSID:</strong> <code>UNpkl-AP-654321-1</code> and <strong>Backhaul PSK:</strong> <code>qrstuvwxyz123456</code></li></ul><p>Use the agent’s current SSID as the <code>for</code> name in both commands, and paste the <strong>controller’s</strong> SSID and PSK as the <code>to</code> values.</p><p>#### Enable the agent role</p><p>In Search on the <strong>agent</strong>, run: <code>turn agent on</code></p><p>The device reboots, joins the controller over Wi‑Fi backhaul, and imports Wi‑Fi settings from the controller. Repeat for each additional agent.</p>"
+      },
+      {
+        "id": "verify-topology",
+        "title": "Verify in the app",
+        "level": 2,
+        "html": "<p>After agents come online:</p><ol><li>Connect to the <strong>controller</strong> network (or sign in to your cloud account).</li><li>Open <strong>Live data</strong> → <strong>Topology</strong>.</li><li>Confirm <strong>Controller</strong> at the root and <strong>Agent</strong> nodes linked below it, then client devices attached.</li></ol><p>In <strong>UNpkl Cloud</strong>, the <strong>Live</strong> tab shows the same topology and connection charts for fleet deployments.</p>"
+      },
+      {
+        "id": "placement",
+        "title": "Placement tips",
+        "level": 2,
+        "html": "<ul><li>Mount agents <strong>between</strong> the controller and areas with weak signal—not at the far edge of coverage.</li><li>Prefer <strong>line of sight</strong> where possible; avoid metal racks, concrete pillars, and microwave ovens between nodes.</li><li>For ceiling APs, center agents over the floor area they should serve.</li><li>If clients stick to one node, move the agent closer to the dead zone or add another agent mid‑path.</li></ul><p>See <strong>Troubleshooting</strong> if roaming is poor or an agent never appears in topology.</p>"
+      },
+      {
+        "id": "mesh-commands",
+        "title": "Mesh commands",
+        "level": 2,
+        "html": "<p>Use <strong>Search</strong> on the controller or agent (while locally connected) for mesh role commands:</p><ul><li><code>turn mesh on</code></li><li><code>turn agent on</code></li><li><code>turn controller on</code></li><li><code>turn mesh controller on</code></li></ul><p>Full phrase lists and SAC behavior are in <strong>Search &amp; command</strong>.</p>"
+      },
+      {
+        "id": "bulk-setup",
+        "title": "Bulk agent setup",
+        "level": 2,
+        "html": "<p>If you are onboarding many agents (for example a full office rollout), contact UNpkl support—we can provide scripts to automate backhaul retargeting and <code>turn agent on</code> instead of stepping through the UI for each unit.</p>"
+      }
+    ],
+    "related": [
+      "initial-setup",
+      "search-and-command",
+      "live-data"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>UNpkl devices ship as <strong>controllers</strong> by default. A <strong>mesh package of three</strong> may arrive with two agents and one controller already configured—skip agent pairing for those units.</p>",
+        "position": "intro"
+      },
+      {
+        "type": "important",
+        "title": "Important",
+        "html": "<p>After the next step the unit becomes an <strong>agent</strong> and cannot be switched back to a controller without advanced manual steps. Double‑check that backhaul SSID and PSK match the <strong>controller</strong> brochure, not the agent brochure.</p>",
+        "after": "agent-setup"
+      }
+    ]
+  },
+  "faq": {
+    "title": "FAQ",
+    "lead": "Quick answers to common UNpkl router, app, and Search questions.",
+    "sections": [
+      {
+        "id": "connectivity",
+        "title": "Router and connectivity",
+        "level": 2,
+        "html": "<h3>Cannot login into the app</h3><p>Make sure you are connected to an SSID (Wi-Fi network) on the UNpkl router</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"how-to-initial-setup-wifi-ssid.jpg\" alt=\"Check Wi-Fi SSID/Network\"></figure><h4>Lost password and cannot remember security questions?</h4><div class=\"unpkl-docs-callout unpkl-docs-callout--important\"><p class=\"unpkl-docs-callout__title\">Warning</p><p>Do not attempt to do a physical reset by pressing the physical reset button here! Follow instructions below.</p></div><p>Locate the admin password in the packaged brochure</p><figure class=\"unpkl-docs-figure unpkl-docs-figure--wide\"><img class=\"unpkl-docs-image unpkl-docs-image--wide\" src=\"brochure-ssh.jpg\" alt=\"Locate the credentials from the packaged brochure shipped with the device\"></figure><p>If you forget the admin password and the answers to your security questions, you can reset local admin data from the LAN using SSH:</p><div class=\"unpkl-docs-cmd-list\"><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">ssh root@doohickey.yhioe.lan</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">rm /mnt/data/yhioe/yh_nf*</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">reboot</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div></div><div class=\"unpkl-docs-callout unpkl-docs-callout--important\"><p class=\"unpkl-docs-callout__title\">Important</p><p>The commands above remove local admin data on the router. Use only when you control the device on your LAN and understand that existing admin accounts will be cleared.</p></div><p>If you need assistance with the above we are happy to assist - please send us a note.</p><h4>Cannot access the internet?</h4><p>Please make sure the router <strong>WAN</strong> cable is connected to the <strong>LAN</strong> port on your Internet Service Provider (ISP) modem (or upstream switch).</p><p>Reboot the router and try again. If the problem continues, see <strong>Troubleshooting</strong> and confirm the WAN link lights on both devices.</p><p>After reboot, register a new admin user through <strong>Initial setup</strong>. Contact UNpkl support if you need step-by-step help.</p>"
+      },
+      {
+        "id": "blocking",
+        "title": "Search and blocking",
+        "level": 2,
+        "html": "<h4>Block or unblock commands seem ineffective</h4><p>When you enter a command like <code>block facebook</code>, the Wi‑Fi network learns IP addresses as DNS resolves each site and blocks them. Results can take a moment to appear in <strong>Live data</strong>.</p><p>If blocking still looks wrong, note the exact command you used and contact support.</p>"
+      },
+      {
+        "id": "mobile-app",
+        "title": "Mobile app",
+        "level": 2,
+        "html": "<h4>App stopped working — cannot log in</h4><p>The most likely cause is an <strong>expired web certificate</strong> on the router.</p><p>We try to renew certificates automatically. To restore app access quickly:</p><ol><li>Open the router <strong>web interface</strong> in a browser and accept the self-signed certificate warning so you can sign in.</li><li>In <strong>Search</strong>, run <code>upgrade</code> to install the latest build and certificates.</li></ol><p>When the upgrade finishes, sign in again from the iOS or Android app.</p>"
+      }
+    ],
+    "related": [
+      "troubleshooting",
+      "initial-setup",
+      "search-and-command"
+    ],
+    "callouts": []
+  },
+  "troubleshooting": {
+    "title": "Troubleshooting",
+    "lead": "Steps to diagnose connectivity, Wi‑Fi mesh, cloud sync, and advanced issues on UNpkl routers and access points.",
+    "sections": [
+      {
+        "id": "no-internet",
+        "title": "No internet",
+        "level": 2,
+        "html": "<ol><li>Confirm the <strong>WAN</strong> cable is plugged into the UNpkl gateway and the <strong>LAN</strong> port on your ISP modem (or upstream switch).</li><li>Check link lights on both the modem and UNpkl WAN port.</li><li>Power-cycle the ISP modem, wait two minutes, then reboot the UNpkl device.</li><li>Open <strong>Live data</strong> and look for blocked DNS, policy blocks, or unusual traffic that might explain a partial outage.</li><li>If the router was recently reset, complete <strong>Initial setup</strong> again and register a new admin user.</li></ol><p>See <strong>FAQ</strong> if you cannot sign in to the app or need to recover an admin password.</p>"
+      },
+      {
+        "id": "app-login",
+        "title": "App and login issues",
+        "level": 2,
+        "html": "<h4>Cannot connect to the router in the app</h4><p>Join a <strong>UNpkl Wi‑Fi SSID</strong> (or connect over Ethernet to the device LAN) before opening the app. Credentials are in the brochure shipped with the unit.</p><h4>Certificate or login failures</h4><p>An <strong>expired web certificate</strong> is the most common cause of sudden app login failures.</p><ol><li>Open the router web UI in a browser and accept the self-signed certificate warning if prompted.</li><li>In <strong>Search</strong>, run <code>upgrade</code> to install the latest build and renewed certificates.</li><li>Sign in again from the iOS or Android app.</li></ol>"
+      },
+      {
+        "id": "wifi-mesh",
+        "title": "Wi‑Fi and EasyMesh",
+        "level": 2,
+        "html": "<p>Mesh extends coverage through a <strong>controller</strong> (main gateway) and <strong>agent</strong> nodes. When clients stick to the wrong node or speeds collapse on an agent, check signal strength first—not just “bars” on the phone.</p><p>Open <strong>Live data → Topology</strong> in the UNpkl app. Each <strong>agent</strong> and <strong>client (STA)</strong> shows <strong>RSSI in dBm</strong> (a negative number, for example <strong>-58 dBm</strong>).</p><div class=\"unpkl-docs-callout unpkl-docs-callout--important\"><p class=\"unpkl-docs-callout__title\">Signal strength quick reference (dBm)</p><p><strong>-30 to -50 dBm</strong> — Excellent. Ideal for streaming, gaming, and agent backhaul. <strong>-60 to -65 dBm</strong> — Good. Reliable for everyday use. <strong>-67 dBm</strong> — Common roaming threshold; many phones start looking for a closer node around here. <strong>-75 to -85 dBm</strong> — Weak. Expect packet loss, latency, and dropped calls. <strong>Below -80 dBm</strong> — Poor. Reposition agents or move the client closer before tuning software settings.</p></div><p>For mesh <strong>setup</strong> (backhaul SSID/PSK, <code>turn agent on</code>, placement), see <strong>UNpkl EasyMesh</strong>.</p><h4>Devices won&#x27;t roam (“sticky” clients)</h4><p><strong>Symptom:</strong> You move near another node but the phone stays on a distant one with RSSI around <strong>-80 dBm</strong> or worse.</p><ol><li>Toggle Wi‑Fi off and on on the device to force a fresh scan.</li><li>In <strong>Topology</strong>, confirm the closer agent shows <strong>stronger dBm</strong> (for example <strong>-55 dBm</strong> vs <strong>-78 dBm</strong> on the current link).</li><li>Reposition agents: nodes that are <strong>too close</strong> can both read <strong>-65 dBm</strong> or better, so hysteresis keeps the phone on the old node—spread them further apart.</li></ol><h4>Slow speeds on an agent</h4><p><strong>Symptom:</strong> Clients on the controller are fast; clients on an agent are slow despite “good” RSSI to the agent.</p><ol><li>In <strong>Topology</strong>, check <strong>backhaul</strong> RSSI between controller and agent—not just client-to-agent signal.</li><li>If backhaul is <strong>below -70 dBm</strong> or flagged poor, move the agent closer to the controller or reduce obstacles (concrete, metal, microwave ovens).</li><li>Prefer <strong>Ethernet backhaul</strong> to the agent when possible; it frees wireless bands for clients.</li></ol><h4>Drops and latency</h4><ol><li>Avoid long <strong>daisy chains</strong> (Router → Agent 1 → Agent 2 → Agent 3) unless your layout requires it; prefer agents linking back toward the controller.</li><li>Run <strong>Optimize network</strong> / channel scan in the app if available, or reduce interference from neighboring Wi‑Fi on the same channel.</li></ol>"
+      },
+      {
+        "id": "cloud-offline",
+        "title": "Cloud offline",
+        "level": 2,
+        "html": "<ol><li>Confirm the gateway has working internet (WAN checks above).</li><li>Verify DNS and NTP can reach the internet—cloud registration depends on both.</li><li>Open <strong>Settings → Cloud</strong> and re-enter your organization code if registration expired or the device was replaced.</li><li>Check <strong>Live data</strong> on the device locally; if local admin works but cloud does not, note the cloud status shown in <strong>Settings</strong> before contacting support.</li></ol>"
+      },
+      {
+        "id": "developers",
+        "title": "Developers and SSH",
+        "level": 2,
+        "html": "<p>For developers familiar with OpenWrt-style tooling, you can SSH to the router using credentials from the shipped brochure (hostname is often <code>doohickey.yhioe.lan</code> on the LAN).</p><p>UNpkl’s main userspace process is <strong>yhioe</strong>—it handles most wireless, policy, and SAC behavior. Useful starting points:</p><div class=\"unpkl-docs-cmd-list\"><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">ssh root@doohickey.yhioe.lan</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">ps | grep yhioe</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div></div><p>UNpkl uses <strong>nftables</strong> (not legacy iptables) for filtering. You should see nftables kernel modules only on this platform:</p><div class=\"unpkl-docs-cmd-list\"><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">nft list table yhq</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div><div class=\"unpkl-docs-cmd\"><textarea readonly class=\"unpkl-docs-cmd__text language-shell\" rows=\"1\" spellcheck=\"false\" aria-label=\"Shell command\" onclick=\"this.select()\">nft list table ip6 yhq6</textarea><button type=\"button\" class=\"unpkl-docs-cmd__copy\" onclick=\"var b=this,el=b.parentElement&&b.parentElement.querySelector('.unpkl-docs-cmd__text'),t=el&&(el.value!==undefined?el.value:el.textContent);if(!t)return false;var done=function(){b.classList.add('is-copied');var l=b.querySelector('.unpkl-docs-cmd__copy-label');if(l){var p=l.textContent;l.textContent='Copied';setTimeout(function(){b.classList.remove('is-copied');l.textContent=p},2000)}};var fb=function(){var e=document.createElement('textarea');e.value=t;e.setAttribute('readonly','');e.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent';document.body.appendChild(e);e.focus();e.select();try{document.execCommand('copy')&&done()}catch(x){}document.body.removeChild(e)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb)}else{fb()};return false\" aria-label=\"Copy command to clipboard\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg><span class=\"unpkl-docs-cmd__copy-label\">Copy</span></button></div></div><p>The <code>yhq</code> / <code>yhq6</code> tables are a good place to inspect IPv4/IPv6 policy state.</p><div class=\"unpkl-docs-callout unpkl-docs-callout--note\"><p class=\"unpkl-docs-callout__title\">Custom development</p><p>If you are extending nftables policy or integrating with <code>yhioe</code>, send us a note—we are happy to assist with platform-specific details.</p></div>"
+      },
+      {
+        "id": "get-help",
+        "title": "Get help",
+        "level": 2,
+        "html": "<p>Before opening a ticket:</p><ol><li>Note your firmware version from <strong>Settings</strong> or after running <code>upgrade</code> in <strong>Search</strong>.</li><li>Export or screenshot <strong>Live data → Topology</strong> when the issue involves mesh or signal strength—include <strong>dBm</strong> values for affected clients and agents.</li><li>Collect diagnostics from <strong>Settings → Support</strong> if your build exposes that option.</li><li>For password recovery or SSH reset workflows, see <strong>FAQ</strong>.</li></ol>"
+      }
+    ],
+    "related": [
+      "faq",
+      "initial-setup",
+      "unpkl-easymesh",
+      "live-data",
+      "search-and-command"
+    ],
+    "callouts": []
+  },
+  "zero-trust": {
+    "title": "Zero Trust on UNpkl",
+    "lead": "Deny all until you allow—on your UNpkl router, with plain-language Search commands.",
+    "sections": [
+      {
+        "id": "what-it-is",
+        "title": "What Zero Trust means here",
+        "level": 2,
+        "html": "<p>By default, Zero Trust needs <strong>no subscription</strong>. Deny-all, allow lists, user groups, and intranet rules all run on the router itself.</p><p>If you subscribe, <strong>UNpkl Cloud</strong> allows destinations only when they are not blacklisted by TALOS and other threat-intelligence feeds, and you can add a custom CSV via AI to harden the network further.</p><p>On most home routers, the default is <strong>allow all</strong>: every device can reach the internet until you block something.</p><p><strong>Zero Trust</strong> flips that: <strong>deny all</strong> until a destination (or device → destination) is <strong>explicitly allowed</strong>. Traffic that is not on your allow list is blocked at the edge—whether that edge faces the <strong>internet</strong> or your <strong>intranet</strong> (LAN, SD‑WAN, or other private prefixes).</p><p>UNpkl makes that switch practical. You do not need enterprise policy UIs—you change the default in <strong>Search</strong>, then unblock what your household or office needs. The same grouping model also supports <strong>zone-style / VRF-like</strong> policy: put sources into users or tags, then allow only specific destination networks.</p>"
+      },
+      {
+        "id": "deny-all",
+        "title": "Turn on deny-all",
+        "level": 2,
+        "html": "<p>Change the default policy from allow-all to deny-all with one command:</p><ul><li><code>block all</code></li></ul><p>On the <strong>latest builds</strong>, you can also use:</p><ul><li><code>deny all</code></li></ul><p>Both set the network default so new destinations are blocked until you allow them.</p><div class=\"unpkl-docs-callout unpkl-docs-callout--important\"><p class=\"unpkl-docs-callout__title\">Important</p><p>After <code>block all</code> / <code>deny all</code>, apps and websites stop working until you <strong>unblock</strong> what you need. Start with a short allow list (for example DNS-friendly sites you use every day), then expand as you watch <strong>Live data</strong>.</p></div><p>To return to a normal allow-all default:</p><ul><li><code>unblock all</code></li></ul>"
+      },
+      {
+        "id": "allow-list",
+        "title": "Allow what you need",
+        "level": 2,
+        "html": "<p>Once deny-all is on, unblock destinations by name:</p><ul><li><code>unblock google</code></li><li><code>unblock github</code></li></ul><p>You can combine steps in one Search submission:</p><ul><li><code>block all. unblock google and github</code></li></ul><p>That turns on Zero Trust and immediately allows Google and GitHub in a single phrase.</p><p>Unblock more sites the same way as you discover what is missing (mail, school portals, streaming, and so on). Check <strong>Live data</strong> to see which destinations devices are trying to reach.</p>"
+      },
+      {
+        "id": "per-device",
+        "title": "Per-device exceptions",
+        "level": 2,
+        "html": "<p>Zero Trust is not only “whole network allow lists.” You can selectively allow <strong>one device</strong> to reach certain destinations—or categories—without opening them for everyone.</p><p>Examples:</p><ul><li><code>unblock tims-iPhone from math websites</code></li><li><code>unblock tims-iPhone from math websites for 2 hours</code></li></ul><p>Use the hostname the router shows in <strong>Live data</strong> (or a name you set in Search). Timed unblocks expire automatically when the duration ends.</p><p>This is useful for homework windows, guest devices, or giving one phone access while the rest of the network stays on deny-all.</p>"
+      },
+      {
+        "id": "assign-user",
+        "title": "Assign devices to a user",
+        "level": 2,
+        "html": "<p>Group several devices under one <strong>user</strong> (or household member name), then apply policy to that person in one command.</p><p>First assign devices:</p><ul><li><code>assign iPhone, Mac and RokuTV to John</code></li></ul><p>Hostnames should match what <strong>Live data</strong> shows (or names you have already set). After that, John’s phones, computer, and TV share the same policy target.</p><p>Then allow temporary access for that user—for example a short window while deny-all stays on for everyone else:</p><ul><li><code>unblock John for 10 minutes</code></li></ul><p>When the timer ends, John’s devices return to the network default (deny-all if you have Zero Trust enabled).</p><p>You can still combine user and destination rules when needed (for example unblocking a person from a category of sites). Assign once; reuse the user name in later Search phrases.</p>"
+      },
+      {
+        "id": "intranet-zones",
+        "title": "Intranet zones and power policy",
+        "level": 2,
+        "html": "<p>Zero Trust is not only about the public internet. You can build <strong>intranet policy</strong>—similar in spirit to <strong>zone-based routing</strong> or <strong>VRF</strong>—by grouping sources and destinations, then allowing only the paths you choose.</p><p>Typical pattern:</p><ol><li>Assign devices to a person.</li><li>Tag that person (or group) with a zone or corporate label.</li><li>Unblock that group from an internal or SD‑WAN prefix.</li></ol><p>Example:</p><ul><li><code>assign tims-iPhone and tims-MacbookPro to Tim</code></li><li><code>tag Tim as FT Corporate</code></li><li><code>unblock FT Corporate from 10.10.0.0/16</code></li></ul><p>That places Tim in the <strong>FT Corporate</strong> group and allows those devices to reach the internal (or SD‑WAN) <strong>10.10.0.0/16</strong> network. Other devices stay on the default deny-all (or your other rules) and do not get that internal route access unless you allow them the same way.</p><p>Use this for home-office split networks, guest isolation, or giving a work profile access to a private CIDR without opening it to every client on the LAN.</p>"
+      },
+      {
+        "id": "workflow",
+        "title": "Suggested workflow",
+        "level": 2,
+        "html": "<ol><li>Open <strong>Search</strong> on the UNpkl app while connected to the router.</li><li>Run <code>block all</code> (or <code>deny all</code> on the latest build).</li><li>Unblock essentials: for example <code>unblock google and github</code> (or combine with step 2 as <code>block all. unblock google and github</code>).</li><li>Optionally assign household devices to users (for example <code>assign iPhone, Mac and RokuTV to John</code>).</li><li>For intranet / SD‑WAN access, tag users into zones and unblock those groups from private prefixes (for example <code>tag Tim as FT Corporate</code> then <code>unblock FT Corporate from 10.10.0.0/16</code>).</li><li>Watch <strong>Live data</strong> for blocked attempts; unblock sites, devices, users, or zones as needed.</li><li>Use timed access such as <code>unblock John for 10 minutes</code> when only a short window is required.</li></ol><p>When you no longer want deny-all as the default, run <code>unblock all</code> and refine with normal <code>block</code> / <code>unblock</code> rules instead.</p>"
+      },
+      {
+        "id": "related-commands",
+        "title": "Related commands",
+        "level": 2,
+        "html": "<ul><li><strong>Deny all by default</strong> — <code>block all</code> or <code>deny all</code></li><li><strong>Restore allow-all default</strong> — <code>unblock all</code></li><li><strong>Allow a site</strong> — <code>unblock google</code></li><li><strong>Deny-all + allow list in one go</strong> — <code>block all. unblock google and github</code></li><li><strong>Device → destination</strong> — <code>unblock tims-iPhone from math websites</code></li><li><strong>Timed device access</strong> — <code>unblock tims-iPhone from math websites for 2 hours</code></li><li><strong>Assign devices to a user</strong> — <code>assign iPhone, Mac and RokuTV to John</code></li><li><strong>Timed user access</strong> — <code>unblock John for 10 minutes</code></li><li><strong>Tag a user as a zone / group</strong> — <code>tag Tim as FT Corporate</code></li><li><strong>Allow a group to an internal prefix</strong> — <code>unblock FT Corporate from 10.10.0.0/16</code></li></ul><p>Full block/unblock grammar, schedules, and port rules are in <strong>Search &amp; command</strong>.</p>"
+      }
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Tip",
+        "html": "<p>Run Zero Trust commands while signed in to the <strong>local router</strong> (connected to its Wi‑Fi or LAN). See <strong>Search &amp; command</strong> for how phrases are sent to the device.</p>",
+        "position": "intro"
+      }
+    ],
+    "related": [
+      "search-and-command",
+      "live-data",
+      "faq",
+      "troubleshooting"
+    ]
+  }
+}

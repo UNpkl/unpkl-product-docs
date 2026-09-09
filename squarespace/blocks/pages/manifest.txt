@@ -1,0 +1,10 @@
+initial-setup | /how-to-initial-setup | How to Get Started with your UNpkl router
+search-and-command | /how-to-search-and-command | Search & command
+settings-and-charts | /how-to-settings-and-charts | Settings & charts
+live-data | /how-to-live-data | Live data
+zero-trust | /how-to-zero-trust | Zero Trust on UNpkl
+unpkl-saas | /how-to-unpkl-saas | UNpkl SaaS
+unpkl-cloud | /how-to-unpkl-cloud | UNpkl Cloud
+unpkl-easymesh | /how-to-unpkl-easymesh | UNpkl EasyMesh
+faq | /how-to-faq | FAQ
+troubleshooting | /how-to-troubleshooting | Troubleshooting

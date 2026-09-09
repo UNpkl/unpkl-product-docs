@@ -1,0 +1,784 @@
+<style>
+/* Squarespace code block resets */
+.sqs-block-code:has(.unpkl-docs-root),
+.sqs-block-code:has(.unpkl-docs-root) .sqs-block-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow: visible !important;
+}
+
+.sqs-block-code:has(.unpkl-docs-root) pre,
+.sqs-block-code:has(.unpkl-docs-root) code {
+  white-space: normal !important;
+  word-wrap: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Restore multiline pre/code inside docs (Squarespace reset above collapses newlines) */
+.unpkl-docs-article pre,
+.unpkl-docs-article pre code {
+  white-space: pre !important;
+  word-wrap: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.sqs-block-code .unpkl-docs-root nav.unpkl-docs-sidebar,
+.sqs-block-code .unpkl-docs-root main.unpkl-docs-main,
+.sqs-block-code .unpkl-docs-root aside.unpkl-docs-toc {
+  position: static !important;
+  float: none !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+.sqs-block-code .unpkl-docs-root main.unpkl-docs-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+}
+
+.sqs-block-code .unpkl-docs-root .unpkl-docs-content {
+  width: 100% !important;
+}
+
+.sqs-block-code .unpkl-docs-root nav.unpkl-docs-breadcrumb {
+  display: block !important;
+  width: 100% !important;
+}
+
+.sqs-block-code .unpkl-docs-root .unpkl-docs-breadcrumb ol {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  width: auto !important;
+}
+
+.unpkl-docs-root {
+  --unpkl-docs-bg: #faf9f8;
+  --unpkl-docs-surface: #ffffff;
+  --unpkl-docs-border: #e1dfdd;
+  --unpkl-docs-text: #242424;
+  --unpkl-docs-text-muted: #605e5c;
+  --unpkl-docs-link: #0067b8;
+  --unpkl-docs-link-hover: #004578;
+  --unpkl-docs-accent: #0078d4;
+  --unpkl-docs-tree-width: 280px;
+  --unpkl-docs-toc-width: 240px;
+  --unpkl-docs-radius: 4px;
+  --unpkl-docs-shadow: 0 1.6px 3.6px rgba(0, 0, 0, 0.13), 0 0.3px 0.9px rgba(0, 0, 0, 0.11);
+  --unpkl-docs-font: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  --unpkl-docs-mono: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: var(--unpkl-docs-tree-width) minmax(0, 1fr);
+  grid-template-areas: "tree main";
+  gap: 0 32px;
+  align-items: start;
+  width: 100% !important;
+  max-width: 1400px !important;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 8px 24px 48px;
+  background: var(--unpkl-docs-bg);
+  color: var(--unpkl-docs-text);
+  font-family: var(--unpkl-docs-font);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.unpkl-docs-root *,
+.unpkl-docs-root *::before,
+.unpkl-docs-root *::after {
+  box-sizing: inherit;
+}
+
+.page-section:has(.unpkl-docs-root) h1.page-title,
+.page-section:has(.unpkl-docs-root) .page-banner-wrapper {
+  display: none !important;
+}
+
+/* ── Left tree (Learn TOC) ── */
+.unpkl-docs-sidebar {
+  grid-area: tree;
+  width: var(--unpkl-docs-tree-width) !important;
+  max-width: var(--unpkl-docs-tree-width) !important;
+  min-width: 0;
+  padding: 8px 16px 8px 0;
+  border-right: 1px solid var(--unpkl-docs-border);
+  background: var(--unpkl-docs-bg);
+}
+
+.unpkl-docs-sidebar__brand {
+  margin: 0 0 16px;
+  padding: 0 4px 12px;
+  border-bottom: 1px solid var(--unpkl-docs-border);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.unpkl-docs-sidebar__brand a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--unpkl-docs-text);
+  text-decoration: none;
+}
+
+.unpkl-docs-sidebar__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.unpkl-docs-sidebar__brand a:hover,
+.unpkl-docs-sidebar__brand a.is-active {
+  color: var(--unpkl-docs-link);
+}
+
+.unpkl-docs-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.unpkl-docs-tree-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unpkl-docs-tree-group summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 8px 8px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--unpkl-docs-text);
+  border-radius: var(--unpkl-docs-radius);
+  user-select: none;
+}
+
+.unpkl-docs-tree-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.unpkl-docs-tree-group summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 16px;
+  margin-right: 2px;
+  color: var(--unpkl-docs-text-muted);
+  transition: transform 0.15s ease;
+}
+
+.unpkl-docs-tree-group[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.unpkl-docs-tree-group summary:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.unpkl-docs-tree-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 8px 0;
+}
+
+.unpkl-docs-tree-list a {
+  display: block;
+  padding: 5px 8px 5px 28px;
+  border-left: 3px solid transparent;
+  border-radius: 0 var(--unpkl-docs-radius) var(--unpkl-docs-radius) 0;
+  color: var(--unpkl-docs-text);
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.unpkl-docs-tree-list a:hover {
+  background: rgba(0, 120, 212, 0.06);
+  color: var(--unpkl-docs-link);
+}
+
+.unpkl-docs-tree-list a.is-active {
+  border-left-color: var(--unpkl-docs-accent);
+  background: rgba(0, 120, 212, 0.1);
+  color: var(--unpkl-docs-link);
+  font-weight: 600;
+}
+
+/* ── Main content ── */
+.unpkl-docs-main {
+  grid-area: main;
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 8px 0;
+}
+
+.unpkl-docs-content {
+  min-width: 0;
+  max-width: 820px;
+  width: 100%;
+}
+
+/* Breadcrumb */
+.unpkl-docs-breadcrumb {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: var(--unpkl-docs-text-muted);
+}
+
+.unpkl-docs-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unpkl-docs-breadcrumb li + li::before {
+  content: "/";
+  margin-right: 4px;
+  color: var(--unpkl-docs-text-muted);
+}
+
+.unpkl-docs-breadcrumb a {
+  color: var(--unpkl-docs-link);
+  text-decoration: none;
+}
+
+.unpkl-docs-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Typography */
+.unpkl-docs-page-title,
+.unpkl-docs-article h1 {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 16px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  white-space: normal !important;
+  word-break: normal !important;
+  color: var(--unpkl-docs-text) !important;
+}
+
+.unpkl-docs-lead,
+.unpkl-docs-hub-header p {
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--unpkl-docs-text-muted);
+}
+
+.unpkl-docs-article h2 {
+  margin: 40px 0 16px;
+  padding-top: 8px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+  scroll-margin-top: 96px;
+  color: var(--unpkl-docs-text) !important;
+}
+
+.unpkl-docs-article h3 {
+  margin: 28px 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  scroll-margin-top: 96px;
+  color: var(--unpkl-docs-text) !important;
+}
+
+.unpkl-docs-article h4 {
+  margin: 20px 0 10px;
+  font-size: 17px;
+  font-weight: 600;
+  scroll-margin-top: 96px;
+  color: var(--unpkl-docs-text) !important;
+}
+
+.unpkl-docs-article p,
+.unpkl-docs-article li {
+  margin: 0 0 12px;
+  color: var(--unpkl-docs-text);
+}
+
+.unpkl-docs-article strong {
+  color: var(--unpkl-docs-text);
+}
+
+.unpkl-docs-article ul,
+.unpkl-docs-article ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.unpkl-docs-quick-ref li {
+  margin-bottom: 8px;
+}
+
+.unpkl-docs-quick-ref code {
+  word-break: break-word;
+}
+
+.unpkl-docs-article a {
+  color: var(--unpkl-docs-link);
+  text-decoration: none;
+}
+
+.unpkl-docs-article a:hover {
+  text-decoration: underline;
+}
+
+.unpkl-docs-article code {
+  padding: 2px 6px;
+  border-radius: var(--unpkl-docs-radius);
+  background: #f3f2f1;
+  font-family: var(--unpkl-docs-mono);
+  font-size: 14px;
+}
+
+.unpkl-docs-article pre {
+  margin: 0 0 16px;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: var(--unpkl-docs-radius);
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: var(--unpkl-docs-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre !important;
+}
+
+/* One command per row with copy button ({copy} code fences) */
+.unpkl-docs-cmd-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.unpkl-docs-cmd {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-radius: var(--unpkl-docs-radius);
+  border: 1px solid var(--unpkl-docs-border);
+  background: #1e1e1e;
+  overflow: hidden;
+}
+
+.unpkl-docs-cmd__text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 14px;
+  font-family: var(--unpkl-docs-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d4d4d4;
+  white-space: pre !important;
+  overflow-x: auto;
+  background: transparent;
+  border: 0;
+  outline: none;
+  resize: none;
+  box-shadow: none;
+  cursor: text;
+}
+
+.unpkl-docs-cmd__text:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--unpkl-docs-accent);
+}
+
+.unpkl-docs-cmd__copy {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0 14px;
+  border: 0;
+  border-left: 1px solid var(--unpkl-docs-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--unpkl-docs-text-muted);
+  font-family: var(--unpkl-docs-font);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.unpkl-docs-cmd__copy:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--unpkl-docs-text);
+}
+
+.unpkl-docs-cmd__copy:focus-visible {
+  outline: 2px solid var(--unpkl-docs-accent);
+  outline-offset: -2px;
+}
+
+.unpkl-docs-cmd__copy.is-copied {
+  color: #6ee7a8;
+}
+
+.unpkl-docs-cmd__copy svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.unpkl-docs-figure {
+  margin: 24px 0;
+  padding: 12px;
+  background: var(--unpkl-docs-bg);
+  border: 1px solid var(--unpkl-docs-border);
+  border-radius: var(--unpkl-docs-radius);
+}
+
+.unpkl-docs-figure img,
+.unpkl-docs-image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 520px);
+  max-height: 640px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--unpkl-docs-border);
+  border-radius: var(--unpkl-docs-radius);
+  object-fit: contain;
+}
+
+/* Tall diagrams / multi-panel screenshots — use full content column on laptop */
+.unpkl-docs-figure--wide img,
+.unpkl-docs-image--wide {
+  max-width: min(100%, 820px);
+  max-height: none;
+}
+
+.unpkl-docs-figure figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--unpkl-docs-text-muted);
+}
+
+/* Callouts */
+.unpkl-docs-callout {
+  margin: 20px 0;
+  padding: 16px 16px 16px 20px;
+  border-left: 4px solid var(--unpkl-docs-accent);
+  border-radius: var(--unpkl-docs-radius);
+  background: var(--unpkl-docs-surface);
+  box-shadow: var(--unpkl-docs-shadow);
+}
+
+.unpkl-docs-callout__title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.unpkl-docs-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.unpkl-docs-callout--important {
+  border-left-color: #d83b01;
+  background: #fff4ce;
+}
+
+.unpkl-docs-callout--note {
+  border-left-color: var(--unpkl-docs-accent);
+  background: #f3f9fd;
+}
+
+.unpkl-docs-callout--tip {
+  border-left-color: #107c10;
+  background: #f1faf1;
+}
+
+/* In this article (inline below breadcrumbs) */
+.unpkl-docs-toc--inline {
+  position: static;
+  width: 100% !important;
+  max-width: 100%;
+  margin: 0 0 28px;
+  padding: 16px 20px;
+  background: var(--unpkl-docs-surface);
+  border: 1px solid var(--unpkl-docs-border);
+  border-radius: var(--unpkl-docs-radius);
+}
+
+.unpkl-docs-toc__title {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--unpkl-docs-text-muted);
+}
+
+.unpkl-docs-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unpkl-docs-toc a {
+  display: block;
+  padding: 4px 0 4px 12px;
+  border-left: 2px solid transparent;
+  color: var(--unpkl-docs-text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.unpkl-docs-toc a[data-level="3"] {
+  padding-left: 24px;
+}
+
+.unpkl-docs-toc a:hover {
+  color: var(--unpkl-docs-link);
+}
+
+/* Article footer */
+.unpkl-docs-article-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--unpkl-docs-border);
+}
+
+.unpkl-docs-related h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--unpkl-docs-text) !important;
+}
+
+.unpkl-docs-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unpkl-docs-meta {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--unpkl-docs-text-muted);
+}
+
+/* Dark mode (hub + article pages) — UNpkl icon navy */
+.unpkl-docs-root--dark {
+  --unpkl-docs-bg: #061e3d;
+  --unpkl-docs-surface: #0a2a4d;
+  --unpkl-docs-border: #1a4068;
+  --unpkl-docs-text: #f3f3f3;
+  --unpkl-docs-text-muted: #a8c0d8;
+  --unpkl-docs-link: #7ec8ff;
+  --unpkl-docs-link-hover: #b8e0ff;
+  --unpkl-docs-accent: #4da3ff;
+  --unpkl-docs-shadow: none;
+}
+
+.page-section:has(.unpkl-docs-root--dark),
+.page-section:has(.unpkl-docs-root--dark) .content-wrapper {
+  background: #061e3d !important;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-tree-group summary:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-tree-list a:hover {
+  background: rgba(77, 163, 255, 0.14);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-tree-list a.is-active {
+  background: rgba(77, 163, 255, 0.2);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-article code {
+  background: #123456;
+  color: #e8f0f8;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-article pre {
+  background: #0a1628;
+  color: #e8f0f8;
+  border: 1px solid var(--unpkl-docs-border);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-article pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-cmd {
+  background: #0a1628;
+  border-color: var(--unpkl-docs-border);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-cmd__text {
+  color: #e8f0f8;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-cmd__copy {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--unpkl-docs-text-muted);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-cmd__copy:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--unpkl-docs-text);
+}
+
+.unpkl-docs-root--dark .unpkl-docs-callout {
+  box-shadow: none;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-callout--important {
+  border-left-color: #ffb900;
+  background: #3a2f00;
+  color: #fff4ce;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-callout--important .unpkl-docs-callout__title {
+  color: #ffb900;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-callout--note {
+  border-left-color: #4da3ff;
+  background: #1a2a3a;
+  color: #d6e9f8;
+}
+
+.unpkl-docs-root--dark .unpkl-docs-callout--tip {
+  border-left-color: #6ccb5f;
+  background: #1a2e1a;
+  color: #dff6dd;
+}
+
+/* Mobile: tree on top, content below */
+@media (max-width: 900px) {
+  .unpkl-docs-root {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tree"
+      "main";
+    gap: 0;
+    padding: 16px;
+  }
+
+  .unpkl-docs-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 0 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--unpkl-docs-border);
+    max-height: 45vh;
+    overflow-y: auto;
+  }
+
+}
+</style>
+
+<div class="unpkl-docs-root unpkl-docs-root--dark unpkl-docs-root--article" data-docs-page="article">
+
+  <nav class="unpkl-docs-sidebar" aria-label="Documentation">
+<div class="unpkl-docs-sidebar__brand"><a href="/how-to"><img class="unpkl-docs-sidebar__icon" src="data:image/png;base64,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" alt="" width="32" height="32"><span>UNpkl</span></a></div>
+<div class="unpkl-docs-tree">
+<details class="unpkl-docs-tree-group">
+<summary>Get started</summary>
+<ul class="unpkl-docs-tree-list">
+<li><a href="/how-to-initial-setup">Initial setup</a></li>
+</ul></details>
+<details class="unpkl-docs-tree-group" open>
+<summary>Manage your network</summary>
+<ul class="unpkl-docs-tree-list">
+<li><a href="/how-to-search-and-command">Search &amp; command</a></li>
+<li><a href="/how-to-settings-and-charts">Settings &amp; charts</a></li>
+<li><a href="/how-to-live-data">Live data</a></li>
+<li><a href="/how-to-zero-trust" class="is-active">Zero Trust</a></li>
+</ul></details>
+<details class="unpkl-docs-tree-group">
+<summary>Platform &amp; cloud</summary>
+<ul class="unpkl-docs-tree-list">
+<li><a href="/how-to-unpkl-saas">UNpkl SaaS</a></li>
+<li><a href="/how-to-unpkl-cloud">UNpkl Cloud</a></li>
+</ul></details>
+<details class="unpkl-docs-tree-group">
+<summary>Hardware &amp; Wi-Fi</summary>
+<ul class="unpkl-docs-tree-list">
+<li><a href="/how-to-unpkl-easymesh">UNpkl EasyMesh</a></li>
+</ul></details>
+<details class="unpkl-docs-tree-group">
+<summary>Help</summary>
+<ul class="unpkl-docs-tree-list">
+<li><a href="/how-to-faq">FAQ</a></li>
+<li><a href="/how-to-troubleshooting">Troubleshooting</a></li>
+</ul></details>
+</div>
+  </nav>
+
+  <main class="unpkl-docs-main">
+    <div class="unpkl-docs-content">
+      <nav class="unpkl-docs-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/how-to">Documentation</a></li>
+          <li><span aria-current="page">Zero Trust on UNpkl</span></li>
+        </ol>
+      </nav>
+
+<aside class="unpkl-docs-toc unpkl-docs-toc--inline" aria-label="In this article"><p class="unpkl-docs-toc__title">In this article</p><ul><li><a href="#what-it-is">What Zero Trust means here</a></li><li><a href="#deny-all">Turn on deny-all</a></li><li><a href="#allow-list">Allow what you need</a></li><li><a href="#per-device">Per-device exceptions</a></li><li><a href="#assign-user">Assign devices to a user</a></li><li><a href="#intranet-zones">Intranet zones and power policy</a></li><li><a href="#workflow">Suggested workflow</a></li><li><a href="#related-commands">Related commands</a></li></ul></aside>
+
+      <article class="unpkl-docs-article">
+        <header>
+          <h1 class="unpkl-docs-page-title">Zero Trust on UNpkl</h1>
+          <p class="unpkl-docs-lead">Deny all until you allow—on your UNpkl router, with plain-language Search commands.</p>
+        </header>
+
+<div class="unpkl-docs-callout unpkl-docs-callout--tip"><p class="unpkl-docs-callout__title">Tip</p><p>Run Zero Trust commands while signed in to the <strong>local router</strong> (connected to its Wi‑Fi or LAN). See <strong>Search &amp; command</strong> for how phrases are sent to the device.</p></div>
+<h2 id="what-it-is">What Zero Trust means here</h2>
+<p>By default, Zero Trust needs <strong>no subscription</strong>. Deny-all, allow lists, user groups, and intranet rules all run on the router itself.</p><p>If you subscribe, <strong>UNpkl Cloud</strong> allows destinations only when they are not blacklisted by TALOS and other threat-intelligence feeds, and you can add a custom CSV via AI to harden the network further.</p><p>On most home routers, the default is <strong>allow all</strong>: every device can reach the internet until you block something.</p><p><strong>Zero Trust</strong> flips that: <strong>deny all</strong> until a destination (or device → destination) is <strong>explicitly allowed</strong>. Traffic that is not on your allow list is blocked at the edge—whether that edge faces the <strong>internet</strong> or your <strong>intranet</strong> (LAN, SD‑WAN, or other private prefixes).</p><p>UNpkl makes that switch practical. You do not need enterprise policy UIs—you change the default in <strong>Search</strong>, then unblock what your household or office needs. The same grouping model also supports <strong>zone-style / VRF-like</strong> policy: put sources into users or tags, then allow only specific destination networks.</p>
+<h2 id="deny-all">Turn on deny-all</h2>
+<p>Change the default policy from allow-all to deny-all with one command:</p><ul><li><code>block all</code></li></ul><p>On the <strong>latest builds</strong>, you can also use:</p><ul><li><code>deny all</code></li></ul><p>Both set the network default so new destinations are blocked until you allow them.</p><div class="unpkl-docs-callout unpkl-docs-callout--important"><p class="unpkl-docs-callout__title">Important</p><p>After <code>block all</code> / <code>deny all</code>, apps and websites stop working until you <strong>unblock</strong> what you need. Start with a short allow list (for example DNS-friendly sites you use every day), then expand as you watch <strong>Live data</strong>.</p></div><p>To return to a normal allow-all default:</p><ul><li><code>unblock all</code></li></ul>
+<h2 id="allow-list">Allow what you need</h2>
+<p>Once deny-all is on, unblock destinations by name:</p><ul><li><code>unblock google</code></li><li><code>unblock github</code></li></ul><p>You can combine steps in one Search submission:</p><ul><li><code>block all. unblock google and github</code></li></ul><p>That turns on Zero Trust and immediately allows Google and GitHub in a single phrase.</p><p>Unblock more sites the same way as you discover what is missing (mail, school portals, streaming, and so on). Check <strong>Live data</strong> to see which destinations devices are trying to reach.</p>
+<h2 id="per-device">Per-device exceptions</h2>
+<p>Zero Trust is not only “whole network allow lists.” You can selectively allow <strong>one device</strong> to reach certain destinations—or categories—without opening them for everyone.</p><p>Examples:</p><ul><li><code>unblock tims-iPhone from math websites</code></li><li><code>unblock tims-iPhone from math websites for 2 hours</code></li></ul><p>Use the hostname the router shows in <strong>Live data</strong> (or a name you set in Search). Timed unblocks expire automatically when the duration ends.</p><p>This is useful for homework windows, guest devices, or giving one phone access while the rest of the network stays on deny-all.</p>
+<h2 id="assign-user">Assign devices to a user</h2>
+<p>Group several devices under one <strong>user</strong> (or household member name), then apply policy to that person in one command.</p><p>First assign devices:</p><ul><li><code>assign iPhone, Mac and RokuTV to John</code></li></ul><p>Hostnames should match what <strong>Live data</strong> shows (or names you have already set). After that, John’s phones, computer, and TV share the same policy target.</p><p>Then allow temporary access for that user—for example a short window while deny-all stays on for everyone else:</p><ul><li><code>unblock John for 10 minutes</code></li></ul><p>When the timer ends, John’s devices return to the network default (deny-all if you have Zero Trust enabled).</p><p>You can still combine user and destination rules when needed (for example unblocking a person from a category of sites). Assign once; reuse the user name in later Search phrases.</p>
+<h2 id="intranet-zones">Intranet zones and power policy</h2>
+<p>Zero Trust is not only about the public internet. You can build <strong>intranet policy</strong>—similar in spirit to <strong>zone-based routing</strong> or <strong>VRF</strong>—by grouping sources and destinations, then allowing only the paths you choose.</p><p>Typical pattern:</p><ol><li>Assign devices to a person.</li><li>Tag that person (or group) with a zone or corporate label.</li><li>Unblock that group from an internal or SD‑WAN prefix.</li></ol><p>Example:</p><ul><li><code>assign tims-iPhone and tims-MacbookPro to Tim</code></li><li><code>tag Tim as FT Corporate</code></li><li><code>unblock FT Corporate from 10.10.0.0/16</code></li></ul><p>That places Tim in the <strong>FT Corporate</strong> group and allows those devices to reach the internal (or SD‑WAN) <strong>10.10.0.0/16</strong> network. Other devices stay on the default deny-all (or your other rules) and do not get that internal route access unless you allow them the same way.</p><p>Use this for home-office split networks, guest isolation, or giving a work profile access to a private CIDR without opening it to every client on the LAN.</p>
+<h2 id="workflow">Suggested workflow</h2>
+<ol><li>Open <strong>Search</strong> on the UNpkl app while connected to the router.</li><li>Run <code>block all</code> (or <code>deny all</code> on the latest build).</li><li>Unblock essentials: for example <code>unblock google and github</code> (or combine with step 2 as <code>block all. unblock google and github</code>).</li><li>Optionally assign household devices to users (for example <code>assign iPhone, Mac and RokuTV to John</code>).</li><li>For intranet / SD‑WAN access, tag users into zones and unblock those groups from private prefixes (for example <code>tag Tim as FT Corporate</code> then <code>unblock FT Corporate from 10.10.0.0/16</code>).</li><li>Watch <strong>Live data</strong> for blocked attempts; unblock sites, devices, users, or zones as needed.</li><li>Use timed access such as <code>unblock John for 10 minutes</code> when only a short window is required.</li></ol><p>When you no longer want deny-all as the default, run <code>unblock all</code> and refine with normal <code>block</code> / <code>unblock</code> rules instead.</p>
+<h2 id="related-commands">Related commands</h2>
+<ul><li><strong>Deny all by default</strong> — <code>block all</code> or <code>deny all</code></li><li><strong>Restore allow-all default</strong> — <code>unblock all</code></li><li><strong>Allow a site</strong> — <code>unblock google</code></li><li><strong>Deny-all + allow list in one go</strong> — <code>block all. unblock google and github</code></li><li><strong>Device → destination</strong> — <code>unblock tims-iPhone from math websites</code></li><li><strong>Timed device access</strong> — <code>unblock tims-iPhone from math websites for 2 hours</code></li><li><strong>Assign devices to a user</strong> — <code>assign iPhone, Mac and RokuTV to John</code></li><li><strong>Timed user access</strong> — <code>unblock John for 10 minutes</code></li><li><strong>Tag a user as a zone / group</strong> — <code>tag Tim as FT Corporate</code></li><li><strong>Allow a group to an internal prefix</strong> — <code>unblock FT Corporate from 10.10.0.0/16</code></li></ul><p>Full block/unblock grammar, schedules, and port rules are in <strong>Search &amp; command</strong>.</p>
+      </article>
+
+      <footer class="unpkl-docs-article-footer">
+        <section class="unpkl-docs-related"><h2>Related content</h2><ul><li><a href="/how-to-search-and-command">Search &amp; command</a></li><li><a href="/how-to-live-data">Live data</a></li><li><a href="/how-to-faq">FAQ</a></li><li><a href="/how-to-troubleshooting">Troubleshooting</a></li></ul></section>
+      </footer>
+    </div>
+  </main>
+</div>
