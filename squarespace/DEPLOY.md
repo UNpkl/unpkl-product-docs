@@ -22,9 +22,12 @@ Config:
 
 ### Enable Pages (one-time)
 
-1. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**
-2. Push to `main` (or run the **Deploy GitHub Pages** workflow manually)
-3. Wait for the workflow; site appears at the URL above
+1. Repo must allow GitHub Pages (public repo on Free, or private with GitHub Team/Enterprise).
+2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**
+3. Push to `main` (or run the **Deploy GitHub Pages** workflow manually)
+4. Wait for the workflow; site appears at the URL above
+
+This repository is **public** so Pages can deploy on the free plan.
 
 ### Custom domain (later)
 

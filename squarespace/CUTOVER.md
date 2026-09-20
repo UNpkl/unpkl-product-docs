@@ -5,7 +5,7 @@ Published docs: **https://unpkl.github.io/unpkl-product-docs/**
 ## After the first successful Actions deploy
 
 1. **Verify** hub + a few articles (nav, images, copy buttons, Zero Trust, EasyMesh).
-2. **Squarespace `/how-to` hub** — replace the Code block with a short notice, for example:
+2. **Squarespace `/how-to` hub** — replace the Code block with [`blocks/hub-page/moved-to-github-pages.html`](blocks/hub-page/moved-to-github-pages.html), or paste:
 
    ```html
    <p>UNpkl product documentation has moved.</p>
