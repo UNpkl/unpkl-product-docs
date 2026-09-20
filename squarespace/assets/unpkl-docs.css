@@ -584,6 +584,25 @@
   color: var(--unpkl-docs-text-muted);
 }
 
+/* GitHub Pages / standalone site: full-bleed dark canvas (not used in Squarespace paste) */
+html.unpkl-docs-site,
+body.unpkl-docs-site {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #061e3d;
+  color: #f3f3f3;
+}
+
+body.unpkl-docs-site .unpkl-docs-root {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0;
+  min-height: 100vh;
+  padding-left: clamp(16px, 3vw, 40px);
+  padding-right: clamp(16px, 3vw, 40px);
+}
+
 /* Dark mode (hub + article pages) — UNpkl icon navy */
 .unpkl-docs-root--dark {
   --unpkl-docs-bg: #061e3d;

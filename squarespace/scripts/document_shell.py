@@ -18,14 +18,14 @@ def wrap_document(title: str, body: str, nav: dict, description: str = "") -> st
     desc = html.escape(description) if description else ""
     meta_desc = f'\n  <meta name="description" content="{desc}">' if desc else ""
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="unpkl-docs-site">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{page_title}</title>{meta_desc}
   <link rel="stylesheet" href="{css}">
 </head>
-<body>
+<body class="unpkl-docs-site">
 {body}
 <script src="{js}" defer></script>
 </body>
