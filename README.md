@@ -1,11 +1,22 @@
 # UNpkl Product Documentation
 
-Vendor-specific markup and assets for UNpkl product documentation.
+Product docs for UNpkl devices, SaaS, DNS firewall, and cloud management.
 
-| Folder | Platform |
-|--------|----------|
-| [`squarespace/`](squarespace/) | [unpkl.io/how-to](https://unpkl.io/how-to) on Squarespace |
+**Live site:** [https://unpkl.github.io/unpkl-product-docs/](https://unpkl.github.io/unpkl-product-docs/)
 
-Docs CSS/JS load **only on docs pages** (via Squarespace Code blocks), not site-wide.
+| Path | Role |
+|------|------|
+| [`squarespace/`](squarespace/) | Authoring (`.txt`), build scripts, assets; also legacy Squarespace paste output |
+| [`dist/`](dist/) | Static site output from `./squarespace/build-site.sh` (gitignored; built in CI) |
+| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy to GitHub Pages on push to `main` |
 
-If you move off Squarespace, add a sibling folder (for example `docusaurus/` or `gitbook/`) with that vendor's markup without touching Squarespace files.
+```bash
+cd squarespace
+./build-site.sh          # → ../dist
+# optional legacy paste files:
+./build-pages.sh
+```
+
+Markup: [`squarespace/TEXT-FORMAT.md`](squarespace/TEXT-FORMAT.md)  
+Deploy: [`squarespace/DEPLOY.md`](squarespace/DEPLOY.md)  
+Cutover from Squarespace: [`squarespace/CUTOVER.md`](squarespace/CUTOVER.md)

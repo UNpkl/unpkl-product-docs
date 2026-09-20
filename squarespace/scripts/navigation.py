@@ -10,25 +10,63 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_NAV_PATH = ROOT / "config" / "navigation.json"
 
 
+def base_url(nav: dict | None) -> str:
+    """Site root prefix for GitHub Pages (e.g. /unpkl-product-docs). Empty for domain root."""
+    if not nav:
+        return ""
+    return str(nav.get("baseUrl") or "").rstrip("/")
+
+
+def home_url(nav: dict | None = None) -> str:
+    if nav and nav.get("homeUrl"):
+        return str(nav["homeUrl"]).rstrip("/") or "/"
+    return "https://unpkl.io"
+
+
 def hub_url(nav: dict) -> str:
+    base = base_url(nav)
+    if base or "baseUrl" in nav:
+        return f"{base}/" if base else "/"
     return (nav.get("hubUrl") or "/how-to").rstrip("/") or "/how-to"
 
 
 def page_prefix(nav: dict) -> str:
+    """Legacy Squarespace flat-prefix (/how-to-). Unused when baseUrl is set."""
     return nav.get("pageUrlPrefix") or "/how-to-"
 
 
 def article_url(slug: str, nav: dict | None = None) -> str:
+    if nav is not None and ("baseUrl" in nav or base_url(nav)):
+        base = base_url(nav)
+        path = f"/{slug}/"
+        return f"{base}{path}" if base else path
+    if nav is not None and nav.get("baseUrl") == "":
+        return f"/{slug}/"
     prefix = page_prefix(nav) if nav else "/how-to-"
     return f"{prefix}{slug}"
 
 
+def asset_url(path: str, nav: dict | None = None) -> str:
+    """Absolute-from-site-root URL for a static asset (css, js, icon)."""
+    rel = path.lstrip("/")
+    base = base_url(nav)
+    return f"{base}/{rel}" if base else f"/{rel}"
+
+
 def slug_from_url(url: str, nav: dict | None = None) -> str:
-    prefix = page_prefix(nav) if nav else "/how-to-"
     normalized = (url or "").rstrip("/")
+    if nav is not None and "baseUrl" in nav:
+        base = base_url(nav)
+        if base and normalized.startswith(base):
+            rest = normalized[len(base) :].lstrip("/")
+            return rest.split("/")[0] if rest else ""
+        if normalized in ("", "/"):
+            return ""
+        return normalized.split("/")[-1]
+    prefix = page_prefix(nav) if nav else "/how-to-"
     if normalized.startswith(prefix):
         return normalized[len(prefix) :]
-    if normalized == hub_url(nav or {}):
+    if normalized == hub_url(nav or {}).rstrip("/"):
         return ""
     return normalized.split("/")[-1]
 
@@ -46,13 +84,13 @@ def item_slug(item: dict, nav: dict | None = None) -> str:
 
 
 def item_url(item: dict, nav: dict) -> str:
-    if item.get("url"):
+    if item.get("url") and "baseUrl" not in nav:
         return str(item["url"]).rstrip("/") if item["url"] != hub_url(nav) else item["url"]
     return article_url(item_slug(item, nav), nav)
 
 
 def normalize_item(item: dict, nav: dict) -> dict:
-    """Ensure item has both slug and url (derived from pageUrlPrefix)."""
+    """Ensure item has both slug and url."""
     slug = item_slug(item, nav)
     url = article_url(slug, nav)
     out = dict(item)
@@ -62,7 +100,7 @@ def normalize_item(item: dict, nav: dict) -> dict:
 
 
 def normalize_nav(nav: dict) -> dict:
-    """Return nav with slug+url on every item; urls derived from pageUrlPrefix."""
+    """Return nav with slug+url on every item."""
     out = dict(nav)
     sections = []
     for section in nav.get("sections", []):

@@ -1,20 +1,22 @@
-# Squarespace product docs
+# Squarespace product docs (authoring + builds)
 
-Microsoft Learn-style tree navigation. The left sidebar, page list, and URLs all come from **`config/navigation.json`** — one edit + `./build-pages.sh` updates every page.
+Microsoft Learn-style tree navigation. The left sidebar, page list, and URLs all come from **`config/navigation.json`** — one edit + build updates the whole site.
 
 ```bash
-./build-pages.sh
-python3 scripts/validate_navigation.py   # check nav ↔ articles ↔ paste files
+./build-site.sh                 # GitHub Pages static site → ../dist
+./build-pages.sh                # legacy Squarespace paste HTML (optional)
+python3 scripts/validate_navigation.py
 ```
 
 | Output | Use |
 |--------|-----|
-| `blocks/hub-page/paste-into-code-block.html` | `/how-to` hub |
-| `blocks/pages/<slug>/paste-into-code-block.html` | Each article (`pageUrlPrefix` + slug) |
-| `blocks/pages/manifest.txt` | Slug → URL → title checklist for Squarespace |
+| `../dist/` | GitHub Pages (CI deploys this) |
+| `blocks/hub-page/paste-into-code-block.html` | Legacy Squarespace hub paste |
+| `blocks/pages/<slug>/paste-into-code-block.html` | Legacy Squarespace article paste |
+| `blocks/pages/manifest.txt` | Slug checklist |
 
-**Navigation:** list each page once with `"slug": "search-and-command"` and `"title": "…"` in `navigation.json`. Do not repeat full `/how-to-*` URLs.
+**Navigation:** list each page once with `"slug": "search-and-command"` in `navigation.json`. For GitHub Pages, URLs are `{baseUrl}/{slug}/` (see `baseUrl` in that file).
 
-Article body: `blocks/pages/<slug>/<slug>.txt` or `config/articles.json`. Markup: [`TEXT-FORMAT.md`](TEXT-FORMAT.md).
+Article body: `blocks/pages/<slug>/<slug>.txt`. Markup: [`TEXT-FORMAT.md`](TEXT-FORMAT.md).
 
-See [`DEPLOY.md`](DEPLOY.md).
+See [`DEPLOY.md`](DEPLOY.md) and [`CUTOVER.md`](CUTOVER.md).

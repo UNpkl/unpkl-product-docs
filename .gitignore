@@ -24,3 +24,6 @@ secrets/
 # Local scratch
 test.js
 *.tmp
+
+# Static site output (built by CI / ./squarespace/build-site.sh)
+dist/

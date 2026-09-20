@@ -1,7 +1,9 @@
 {
   "productName": "UNpkl",
   "hubTitle": "How to UN-pickle",
-  "hubUrl": "/how-to",
+  "baseUrl": "/unpkl-product-docs",
+  "homeUrl": "https://unpkl.io",
+  "hubUrl": "/unpkl-product-docs/",
   "iconUrl": "",
   "pageUrlPrefix": "/how-to-",
   "sections": [

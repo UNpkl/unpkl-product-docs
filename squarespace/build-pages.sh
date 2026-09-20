@@ -75,8 +75,14 @@ if [[ -x "$SYNC_TXT" ]] || [[ -f "$SYNC_TXT" ]]; then
 fi
 
 prepare_hub_body() {
-  local sidebar
-  sidebar="$(python3 "$RENDER_SIDEBAR" "$NAV" "/how-to")"
+  local sidebar hub_path
+  hub_path="$(python3 -c "
+import sys
+sys.path.insert(0, '$ROOT/scripts')
+from navigation import load_navigation, hub_url
+print(hub_url(load_navigation()))
+")"
+  sidebar="$(python3 "$RENDER_SIDEBAR" "$NAV" "$hub_path")"
   local overview
   overview="$(python3 -c "
 import sys
