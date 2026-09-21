@@ -8,11 +8,11 @@ Models may differ individually, however this set of instructions is common to al
 2. Install the UNpkl app from the App Store or Play Store on your smartphone.
 3. Provide upstream internet using **one** of these paths:
    - **Ethernet WAN** — connect the supplied network cable to the **WAN** port on the router and the other end to your ISP modem **LAN** port (or upstream switch).
-   - **Cellular WAN** (models with a SIM tray) — insert an activated SIM into the **default SIM slot**, then seat the tray fully. Use this path when you are not plugging into a wired ISP modem.
+   - **Cellular WAN** — if your unit has a **SIM/data slot** and an **RM520** module, insert an activated SIM into the **default SIM slot**, then seat the tray fully. Use this path when you are not plugging into a wired ISP modem.
 4. Connect the power cord to power up your UNpkl router. Wait 2–3 minutes (cellular models may take a bit longer for the first registration).
 
 > [!note] Note
-> Do not mix both upstreams for first boot unless your model and plan specifically support dual WAN. Pick Ethernet **or** the default SIM slot, then continue with Wi‑Fi and app setup below.
+> Do not mix both upstreams for first boot unless your model and plan specifically support dual WAN. Pick Ethernet **or** the default SIM slot (RM520 units only), then continue with Wi‑Fi and app setup below.
 
 ## Connecting for the first time using the app {#first-time-app-setup}
 
